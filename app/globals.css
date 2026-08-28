@@ -1274,7 +1274,7 @@ h2.sec-h b { color: var(--mint); font-weight: 600 }
 /* =================================================================
    CTA
 ================================================================= */
-.cta-sec { padding: 110px 0 }
+.cta-sec { padding: 110px 0; scroll-margin-top: 72px }
 .cta-card {
   background: linear-gradient(135deg, var(--surface), var(--surface-2));
   border: 1px solid var(--mint-line);
