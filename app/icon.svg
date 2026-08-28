@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40">
+  <!--
+    The Veloce mark as a browser icon (2026-08-25). Next's App Router picks this
+    file up by name and emits the <link rel="icon">; `favicon.ico` beside it is
+    the fallback for anything that will not take an SVG.
+
+    Transparent and **theme-aware**, which is the whole reason this file is SVG
+    and not another raster: a tab strip is light on one desk and near-black on
+    the next, and a single flat icon has to lose one of them. The deep green
+    reads on a light strip and vanishes on a dark one, so dark chrome gets the
+    cream leading chevron and pale-green trails — the same two grounds the mark
+    has inside the product (`components/ui/brand-mark.tsx`).
+
+    Strokes and fades are heavier than the in-app mark on purpose. This is read
+    at 16px: at the app's 34% the trailing chevrons disappear entirely and the
+    mark stops being three chevrons at all.
+  -->
+  <style>
+    .lead { stroke: #0a5c4a }
+    .t1 { stroke: #0a5c4a; opacity: .5 }
+    .t2 { stroke: #0a5c4a; opacity: .7 }
+    @media (prefers-color-scheme: dark) {
+      .lead { stroke: #f5f1e8 }
+      .t1 { stroke: #9ccabd; opacity: .72 }
+      .t2 { stroke: #9ccabd; opacity: 1 }
+    }
+  </style>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path class="t1" d="M6.2 11.6 10.1 20 6.2 28.4" stroke-width="3.4"/>
+    <path class="t2" d="M14 10.8 18.2 20 14 29.2" stroke-width="3.7"/>
+    <path class="lead" d="M23.4 6.6 32.8 20 23.4 33.4" stroke-width="5.6"/>
+  </g>
+</svg>

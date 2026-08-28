@@ -1,4 +1,5 @@
 import { Logo } from './Logo'
+import { CONTACT_URL, DEMO_URL } from '@/lib/siteConfig'
 
 const PRODUCT = [
   { href: '#how', label: 'How it works' },
@@ -8,16 +9,16 @@ const PRODUCT = [
 ]
 
 const COMPANY = [
-  { href: 'mailto:sooraj@gai.ventures', label: 'Contact' },
-  { href: '#contact', label: 'Book a demo' },
-  { href: 'mailto:sooraj@gai.ventures', label: 'Careers' },
+  { href: CONTACT_URL, label: 'Contact' },
+  { href: DEMO_URL, label: 'Book a demo' },
+  { href: CONTACT_URL, label: 'Careers' },
 ]
 
 const LEGAL = [
-  { href: 'mailto:sooraj@gai.ventures', label: 'Privacy' },
-  { href: 'mailto:sooraj@gai.ventures', label: 'Terms' },
-  { href: 'mailto:sooraj@gai.ventures', label: 'Data processing' },
-  { href: 'mailto:sooraj@gai.ventures', label: 'Security' },
+  { href: CONTACT_URL, label: 'Privacy' },
+  { href: CONTACT_URL, label: 'Terms' },
+  { href: CONTACT_URL, label: 'Data processing' },
+  { href: CONTACT_URL, label: 'Security' },
 ]
 
 function Column({ title, items }) {
@@ -53,7 +54,7 @@ export default function Footer() {
         </div>
         <div className="foot-bottom">
           <div>© 2026 gAI Ventures</div>
-          <div>sooraj@gai.ventures</div>
+          <a href={CONTACT_URL}>sooraj@gai.ventures</a>
         </div>
       </div>
     </footer>

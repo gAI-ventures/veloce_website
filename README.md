@@ -11,6 +11,10 @@ npm run dev
 
 Opens at http://localhost:3000
 
+Copy `.env.example` to `.env` before starting the site. The three public
+variables configure the product login, contact mail link, and Calendly demo
+destination.
+
 ## Build for production
 
 ```bash
@@ -61,6 +65,7 @@ store/
 
 Most copy lives in the components. Change the hero headline in `components/Hero.jsx`, edit pipeline steps in `components/Pipeline.jsx`, swap the agents list in `components/Agents.jsx`.
 
-Contact email is `sooraj@gai.ventures` — searchable across `Nav.jsx`, `CTA.jsx`, `Footer.jsx`.
+Public destinations are configured in `.env` and read through
+`lib/siteConfig.js`.
 
 Canned Ask Veloce answers live in `app/api/ask/route.js`. Replace that file with a real call to your backend when the time comes — the client component doesn't change.

@@ -2,6 +2,7 @@
 
 import AskVeloce from './AskVeloce'
 import { useReveal } from '@/hooks/useReveal'
+import { DEMO_URL } from '@/lib/siteConfig'
 
 function Check() {
   return (
@@ -35,7 +36,7 @@ export default function Hero() {
           </p>
 
           <div className="h-cta">
-            <a className="btn btn-primary" href="#contact">
+            <a className="btn btn-primary" href={DEMO_URL}>
               Book a demo
               <svg className="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path

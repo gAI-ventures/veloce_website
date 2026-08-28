@@ -1,6 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/useReveal'
+import { CONTACT_URL, DEMO_URL } from '@/lib/siteConfig'
 
 export default function CTA() {
   const ref = useReveal()
@@ -15,7 +16,7 @@ export default function CTA() {
               Come to the call with a real property you're thinking about. We'll walk you through what Veloce would look like running against that operation, and what setup would cost. You'll leave with a straight answer, not another pitch.
             </p>
             <div className="cta-actions">
-              <a className="btn btn-primary" href="mailto:sooraj@gai.ventures?subject=Veloce%20demo">
+              <a className="btn btn-primary" href={DEMO_URL}>
                 Book a demo
                 <svg className="arr" width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path
@@ -27,7 +28,7 @@ export default function CTA() {
                   />
                 </svg>
               </a>
-              <a className="btn btn-ghost" href="mailto:sooraj@gai.ventures?subject=Veloce%20question">
+              <a className="btn btn-ghost" href={CONTACT_URL}>
                 Ask something first
               </a>
             </div>
@@ -42,7 +43,7 @@ export default function CTA() {
               </div>
             </div>
             <div className="row">
-              <a href="mailto:sooraj@gai.ventures">
+              <a href={CONTACT_URL}>
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M4 6h16v12H4z M4 6l8 7 8-7" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
                 </svg>
