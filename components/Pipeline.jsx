@@ -52,9 +52,9 @@ const STEPS = [
   {
     n: '05',
     tag: 'Insight',
-    h: <>Ask anything, in <b>plain English</b>. See the working underneath.</>,
+    h: <>See the whole operation. Know <b>what needs action</b>.</>,
     p: [
-      <>Calls, complaints, audit results, all end up in one store. You ask the question the way you'd ask a colleague. Veloce answers, and shows you the query it ran to get there. Nobody has to trust the model. They can read the SQL.</>,
+      <>Veloce tracks calls, tickets, reservations, housekeeping, and audits across every property. Ask what is happening, spot recurring problems, and get a clear view of what needs attention next without pulling reports together by hand.</>,
     ],
     Visual: AskCard,
   },

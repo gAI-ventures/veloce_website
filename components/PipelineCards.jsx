@@ -154,19 +154,25 @@ export function AskCard() {
   return (
     <div className="demo-ask">
       <div className="a-in">
-        <span className="q">show me every AC issue open across all rooms this month</span>
+        <span className="q">what needs attention across all my properties today?</span>
       </div>
       <div className="a-out">
-        3 open. <b>Rm 401</b> (chronic, from voice today), <b>Rm 305</b> (opened 12 Jul), <b>Rm 218</b> (opened 4 Jul, reopened). Seven total tickets on AC across those rooms in the last 14 days.
+        3 priorities. <b>Harbour House</b> has recurring AC faults, <b>Park View</b> has two arrivals awaiting confirmation, and <b>City Suites</b> has four housekeeping checks due before 2 PM.
       </div>
-      <div className="a-sql">
-        <div className="head">the query</div>
-        <span className="kw">SELECT</span> room, <span className="kw">COUNT</span>(*)<br />
-        <span className="kw">FROM</span> tickets<br />
-        <span className="kw">WHERE</span> asset = 'AC'<br />
-        &nbsp;&nbsp;<span className="kw">AND</span> status = 'open'<br />
-        &nbsp;&nbsp;<span className="kw">AND</span> created &gt;= date_trunc('month', now())<br />
-        <span className="kw">GROUP BY</span> room
+      <div className="a-actions">
+        <div className="head">recommended actions</div>
+        <div className="a-action">
+          <span className="mark">1</span>
+          <div><b>Inspect the recurring AC faults</b><span>Harbour House · Rooms 401, 305, and 218</span></div>
+        </div>
+        <div className="a-action">
+          <span className="mark">2</span>
+          <div><b>Confirm the two arriving stays</b><span>Park View · Both guests arrive today</span></div>
+        </div>
+        <div className="a-action">
+          <span className="mark">3</span>
+          <div><b>Rebalance the housekeeping team</b><span>City Suites · Four checks due by 2 PM</span></div>
+        </div>
       </div>
     </div>
   )

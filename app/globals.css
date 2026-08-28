@@ -830,24 +830,55 @@ h2.sec-h b { color: var(--mint); font-weight: 600 }
   line-height: 1.6;
 }
 .demo-ask .a-out b { color: var(--mint); font-weight: 600 }
-.demo-ask .a-sql {
-  font-family: var(--mono);
-  font-size: 11.5px;
-  color: var(--muted);
+.demo-ask .a-actions {
   background: var(--bg-2);
   border: 1px solid var(--line);
   border-radius: 10px;
   padding: 12px 14px;
-  line-height: 1.5;
 }
-.demo-ask .a-sql .kw { color: var(--mint) }
-.demo-ask .a-sql .head {
+.demo-ask .a-actions .head {
+  font-family: var(--mono);
   color: var(--muted-2);
   font-size: 10.5px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 6px;
   font-weight: 600;
+}
+.demo-ask .a-action {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 9px 0;
+  border-top: 1px solid var(--line);
+}
+.demo-ask .a-action .mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  background: var(--mint-bg);
+  color: var(--mint);
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+}
+.demo-ask .a-action b {
+  display: block;
+  color: var(--text);
+  font-size: 12.5px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+.demo-ask .a-action div span {
+  display: block;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  line-height: 1.45;
+  margin-top: 2px;
 }
 
 /* =================================================================
