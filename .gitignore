@@ -1,0 +1,17 @@
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+coverage/
+.vercel/
+
+# Local environment files (keep the documented template)
+.env
+.env.*
+!.env.example
+
+# Logs and operating-system files
+.DS_Store
+*.log
+Thumbs.db
