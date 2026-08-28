@@ -28,7 +28,13 @@ function Column({ title, items }) {
       <ul>
         {items.map((it) => (
           <li key={it.label}>
-            <a href={it.href}>{it.label}</a>
+            <a
+              href={it.href}
+              target={it.href === CONTACT_URL ? '_blank' : undefined}
+              rel={it.href === CONTACT_URL ? 'noreferrer' : undefined}
+            >
+              {it.label}
+            </a>
           </li>
         ))}
       </ul>
@@ -54,7 +60,7 @@ export default function Footer() {
         </div>
         <div className="foot-bottom">
           <div>© 2026 gAI Ventures</div>
-          <a href={CONTACT_URL}>sooraj@gai.ventures</a>
+          <a href={CONTACT_URL} target="_blank" rel="noreferrer">sooraj@gai.ventures</a>
         </div>
       </div>
     </footer>

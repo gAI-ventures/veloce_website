@@ -1,7 +1,7 @@
 'use client'
 
 import { useReveal } from '@/hooks/useReveal'
-import { CONTACT_URL, DEMO_URL } from '@/lib/siteConfig'
+import { CONTACT_URL, DEMO_URL, QUESTION_URL } from '@/lib/siteConfig'
 
 export default function CTA() {
   const ref = useReveal()
@@ -28,7 +28,12 @@ export default function CTA() {
                   />
                 </svg>
               </a>
-              <a className="btn btn-ghost" href={CONTACT_URL}>
+              <a
+                className="btn btn-ghost"
+                href={QUESTION_URL}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Ask something first
               </a>
             </div>
@@ -43,7 +48,7 @@ export default function CTA() {
               </div>
             </div>
             <div className="row">
-              <a href={CONTACT_URL}>
+              <a href={CONTACT_URL} target="_blank" rel="noreferrer">
                 <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                   <path d="M4 6h16v12H4z M4 6l8 7 8-7" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
                 </svg>

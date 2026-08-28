@@ -14,7 +14,7 @@ export default function Nav() {
         <nav className="nav-links" aria-label="Primary">
           <a href="#how">How it works</a>
           <a href="#agents">Agents</a>
-          <a href={CONTACT_URL}>Contact</a>
+          <a href={CONTACT_URL} target="_blank" rel="noreferrer">Contact</a>
         </nav>
         <div className="nav-actions">
           <a className="nav-login" href={LOGIN_URL}>Log in</a>

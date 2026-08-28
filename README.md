@@ -11,7 +11,7 @@ npm run dev
 
 Opens at http://localhost:3000
 
-Copy `.env.example` to `.env` before starting the site. The three public
+Copy `.env.example` to `.env` before starting the site. The public
 variables configure the product login, contact mail link, and Calendly demo
 destination.
 
