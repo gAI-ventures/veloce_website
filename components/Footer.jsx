@@ -10,6 +10,7 @@ const PRODUCT = [
 const COMPANY = [
   { href: 'mailto:sooraj@gai.ventures', label: 'Contact' },
   { href: '#contact', label: 'Book a demo' },
+  { href: 'mailto:sooraj@gai.ventures', label: 'Careers' },
 ]
 
 const LEGAL = [
@@ -42,7 +43,7 @@ export default function Footer() {
           <div className="foot-brand-col">
             <Logo variant="footer" />
             <p>
-              The AI operating layer for hospitality. Answers your phones, calls your in-house guests, and gives you one place to run the operation from.
+              The AI ops layer for premium hospitality. Answers your phones, calls your in-house guests, and gives you one place to run the operation from.
             </p>
             <div className="foot-meta">Built by gAI Ventures</div>
           </div>

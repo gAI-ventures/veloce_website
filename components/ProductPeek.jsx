@@ -11,8 +11,9 @@ import { useReveal } from '@/hooks/useReveal'
  */
 
 const TABS = [
-  { id: 'fleet', label: 'Property portfolio' },
+  { id: 'fleet', label: 'Fleet health' },
   { id: 'call',  label: 'Call · captured' },
+  { id: 'brief', label: 'Morning brief' },
 ]
 
 export default function ProductPeek() {
@@ -26,10 +27,10 @@ export default function ProductPeek() {
         <div className="reveal" ref={introRef} style={{ maxWidth: 720 }}>
           <div className="kicker">concept screens</div>
           <h2 className="sec-h">
-            What Veloce looks like <b>once it's running your property</b>.
+            What it looks like when Veloce is <b>actually running</b>.
           </h2>
           <p className="sec-lede">
-            Two views from the app. A property-portfolio overview for the person running several properties, and one captured call walked all the way through, from transcript to follow-up cascade.
+            Three views from the app. A fleet-wide health board for the person running multiple properties, one captured call end to end, and the morning brief that lands before anyone at your properties has walked in.
           </p>
         </div>
 
@@ -51,6 +52,7 @@ export default function ProductPeek() {
           <div className="peek-body">
             {active === 'fleet' && <FleetScreen />}
             {active === 'call'  && <CallScreen />}
+            {active === 'brief' && <BriefScreen />}
           </div>
         </div>
       </div>
@@ -71,7 +73,7 @@ function FleetScreen() {
     <>
       <div className="peek-appbar">
         <div className="peek-appbar-l">
-          <span className="peek-crumb">Portfolio</span>
+          <span className="peek-crumb">Fleet</span>
           <span className="peek-sep">/</span>
           <span className="peek-here">All properties</span>
         </div>
@@ -188,3 +190,46 @@ function PeekRow({ k, v, mint }) {
   )
 }
 
+/* ============ SCREEN 3 · morning brief ============ */
+function BriefScreen() {
+  return (
+    <>
+      <div className="peek-appbar">
+        <div className="peek-appbar-l">
+          <span className="peek-crumb">Casa Blanca · Lisbon</span>
+          <span className="peek-sep">/</span>
+          <span className="peek-here">Morning brief · 07:00 WET</span>
+        </div>
+        <div className="peek-appbar-r">
+          <span className="peek-user">MK</span>
+        </div>
+      </div>
+      <div className="peek-brief">
+        <h3 className="peek-brief-h">Overnight · Tue, 18 Aug 2026</h3>
+        <p className="peek-brief-p">
+          Twelve outbound calls made, all answered. Three inbound calls picked up between midnight and 05:00. Two new tickets, neither high severity. One chronic flag cleared. Occupancy 88%. The plumbing issue in 312 was resolved and the guest confirmed on the check-out call.
+        </p>
+
+        <div className="peek-brief-band">
+          <div className="peek-band-k">
+            <div className="peek-band-lbl">Needs your eyes</div>
+            <div className="peek-band-item"><b>Room 214.</b> AC noise, ongoing. Housekeeping tech went in at 16:12 yesterday, ticket still open. Guest departing tomorrow.</div>
+            <div className="peek-band-item"><b>Room 407.</b> Guest raised the wifi twice in three days. Chronic flag fired. Router replacement recommended.</div>
+          </div>
+          <div className="peek-band-k">
+            <div className="peek-band-lbl">Going well</div>
+            <div className="peek-band-item"><b>Reviews.</b> Three new reviews overnight, all 5-star. Two mention the front desk by name.</div>
+            <div className="peek-band-item"><b>Checkout calls.</b> 8 of 9 answered. Average call length 1m14s. No new complaints raised.</div>
+          </div>
+        </div>
+
+        <div className="peek-brief-foot">
+          <div className="peek-brief-stat"><span className="peek-brief-num">12</span> outbound calls</div>
+          <div className="peek-brief-stat"><span className="peek-brief-num">3</span> inbound calls</div>
+          <div className="peek-brief-stat"><span className="peek-brief-num">2</span> new tickets</div>
+          <div className="peek-brief-stat"><span className="peek-brief-num" style={{color:'var(--mint)'}}>1</span> chronic cleared</div>
+        </div>
+      </div>
+    </>
+  )
+}

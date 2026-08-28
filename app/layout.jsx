@@ -2,9 +2,9 @@ import { Providers } from './providers'
 import './globals.css'
 
 export const metadata = {
-  title: 'Veloce · The AI operating layer for hospitality',
+  title: 'Veloce · AI ops for premium hospitality',
   description:
-    'Veloce is the AI operating layer for hospitality. Voice on every call, structured capture on every issue, and one place to run your operation from.',
+    'Veloce is an AI ops layer for premium hospitality. Voice on every call, structured capture on every issue, and one place to run your operation from.',
 }
 
 export default function RootLayout({ children }) {

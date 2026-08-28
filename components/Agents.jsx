@@ -11,17 +11,17 @@ const AGENTS = [
   {
     code: 'veloce-wellbeing',
     name: 'Daily wellbeing agent',
-    p: "The mid-stay check-in call, once a day per in-house guest, asking about the stay and catching complaints while there is still time to fix them.",
+    p: "The mid-stay check-in. One call a day per in-house guest, asking about the stay and catching complaints while there's still time to fix them.",
   },
   {
     code: 'veloce-checkout',
     name: 'Check-out agent',
-    p: 'The day-of call that summarises the stay, asks for a review at the moment guests are most inclined to leave one, and closes out any lingering tickets on the way out.',
+    p: 'The day-of call. Summarises the stay, asks for a review when guests are most inclined to leave one, and closes out any lingering tickets.',
   },
   {
     code: 'veloce-receptionist',
     name: 'Receptionist',
-    p: 'Picks up every inbound call for reservations, availability and general queries, and hands off cleanly to a human when something is outside its scope.',
+    p: 'Takes every inbound call. Reservations, availability, generic queries. Hands off cleanly to a human when something is outside its scope.',
   },
   {
     code: 'veloce-chores',

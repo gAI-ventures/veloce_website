@@ -5,21 +5,21 @@ import { useReveal } from '@/hooks/useReveal'
 const ITEMS = [
   {
     n: '01',
-    tag: 'The review has replaced the front desk',
-    h: "The complaint goes to the review site, not to your reception.",
-    p: "The guest who used to walk down to your desk now types a paragraph on Booking or Airbnb, and by the time you read it they've checked out, the room is turning over, and there is nothing you can do except reply.",
+    tag: 'The review has replaced the complaint',
+    h: "They don't call the front desk. They post.",
+    p: "The guest who used to knock on your reception door now writes a paragraph on Booking. By the time you see it, they've checked out, and the room is turning over.",
   },
   {
     n: '02',
-    tag: 'A mid-stay call catches the same complaint earlier',
-    h: 'The AC in 401, on Tuesday, not Friday.',
-    p: 'When Veloce rings a guest halfway through their stay, the complaint reaches you while there is still time to fix it, and the guest is still in the room to see it fixed. A Tuesday phone call and a Wednesday repair is a very different Friday review than a five-day slow burn.',
+    tag: 'Ops runs on memory',
+    h: "Your best data is inside a caretaker's head.",
+    p: "Who's complained, which room's AC has failed twice, which vendor is unreliable. All of it lives in the head of one person you didn't hire to be a database.",
   },
   {
     n: '03',
-    tag: 'Fixed before checkout is fixed on the review too',
-    h: 'The reviews you never had to defend.',
-    p: "The best defense against a bad review isn't a smarter response strategy, it's the version of the stay where the thing they were going to complain about got sorted before they left. That is the version Veloce runs.",
+    tag: 'A five-minute check saves a one-star review',
+    h: 'Mid-stay is the only chance you have.',
+    p: 'By the time a review shows up, the guest is gone and the room is turning over. Catch the same complaint mid-stay and the review reads completely differently a week later.',
   },
 ]
 
@@ -30,14 +30,11 @@ export default function ValueProp() {
   return (
     <section className="pad" style={{ paddingTop: 0 }}>
       <div className="wrap">
-        <div className="reveal" style={{ maxWidth: 720 }} ref={introRef}>
-          <div className="kicker">why it matters</div>
+        <div className="reveal" style={{ maxWidth: 640 }} ref={introRef}>
+          <div className="kicker">why now</div>
           <h2 className="sec-h">
-            Better reviews start with <b>catching the issue mid-stay</b>.
+            Guests aren't waiting to <b>tell you</b> what went wrong.
           </h2>
-          <p className="sec-lede">
-            Every complaint that reaches you in real time is one that doesn't reach your review page a week later. Veloce runs the call that gets you there.
-          </p>
         </div>
 
         <div className="three-grid stagger" ref={gridRef}>

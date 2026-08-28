@@ -16,7 +16,7 @@ const STEPS = [
     h: <>An AI voice that <b>calls every guest</b>, in their own language.</>,
     p: [
       <>Once during check-in day, at least once mid-stay, and again on check-out day. Complaints get raised while the guest is still in the room. Reviews get asked for while the stay is still warm. Nothing waits for the guest to bother walking down to the front desk.</>,
-      <>Runs in every major language your guests speak, including the mid-sentence code-switching that most stays naturally slip into. English, Spanish, French, Portuguese, Mandarin, Arabic, Hindi and dozens more.</>,
+      <>Runs in every language ElevenLabs supports. English, Spanish, French, Portuguese, Mandarin, Arabic, Hindi, and the sixty-odd more they cover, including mid-sentence code-switching where guests naturally do it.</>,
       <>Inbound is on the same rail. Reservations, availability, small requests picked up day and night.</>,
     ],
     Visual: VoiceCard,
@@ -36,26 +36,25 @@ const STEPS = [
     tag: 'Route',
     h: <>The <b>right person</b> gets pinged, on the channel they read.</>,
     p: [
-      <>When a ticket is high severity for an in-house guest on a chronic asset, the ops manager gets a WhatsApp inside a minute, the GM is cc'd on email, and housekeeping sees it on their tablet before anyone has thought to open a dashboard.</>,
+      <>Severity high, in-house guest, chronic asset. Ops manager on WhatsApp inside a minute. GM cc'd on email. Housekeeping sees it on their tablet. Nothing sits waiting for someone to open a dashboard.</>,
     ],
     Visual: RouteCard,
   },
   {
     n: '04',
     tag: 'Ops floor',
-    h: <>Housekeeping and audits, in a <b>staff app your team will actually open</b>.</>,
+    h: <>Housekeeping and audits, in <b>the same product</b>.</>,
     p: [
-      <>Turnover checklists stop living on paper. Housekeepers work off a single screen designed for their shift, with no training deck required. Supervisors watch the checklist fill in as it happens and know before the guest does when something got skipped. Audits are scheduled, run and signed off in the same place.</>,
-      <>When the same asset keeps breaking, Veloce flags it so you replace instead of repairing it a fourth time.</>,
+      <>Turnover checklists stop living on paper. Supervisors see them fill in as it happens and know before the guest does when something got skipped. Audits are scheduled, run, and signed off in one place. When the same asset keeps breaking, Veloce flags it so you replace instead of repairing it a fourth time.</>,
     ],
     Visual: HousekeepingCard,
   },
   {
     n: '05',
     tag: 'Insight',
-    h: <>Ask anything in <b>plain English</b>, and see the working underneath.</>,
+    h: <>Ask anything, in <b>plain English</b>. See the working underneath.</>,
     p: [
-      <>Calls, complaints and audit results all end up in one store, so you can ask the question the way you'd ask a colleague and Veloce will answer, showing you the query it ran to get there. Nobody on your team has to trust the model, because they can read the SQL for themselves.</>,
+      <>Calls, complaints, audit results, all end up in one store. You ask the question the way you'd ask a colleague. Veloce answers, and shows you the query it ran to get there. Nobody has to trust the model. They can read the SQL.</>,
     ],
     Visual: AskCard,
   },

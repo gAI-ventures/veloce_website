@@ -133,21 +133,8 @@ input { font-family: inherit }
 /* =================================================================
    HERO
 ================================================================= */
-.hero { padding: 88px 0 72px }
+.hero { padding: 100px 0 80px }
 .hero-inner { max-width: 900px }
-.hero-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
-  gap: 56px;
-  align-items: center;
-}
-.hero-copy { min-width: 0 }
-.hero-visual { min-width: 0; display: flex; justify-content: flex-end }
-@media (max-width: 1000px) {
-  .hero-grid { grid-template-columns: 1fr; gap: 44px }
-  .hero-visual { justify-content: center }
-  .hero { padding: 72px 0 56px }
-}
 .brand-line {
   font-family: var(--mono);
   font-size: 12px;
@@ -160,21 +147,21 @@ input { font-family: inherit }
 }
 .brand-line::before { content: "◆"; color: var(--mint); opacity: 0.6 }
 h1.h-title {
-  font-size: clamp(36px, 4.6vw, 60px);
-  line-height: 1.05;
-  letter-spacing: -0.028em;
+  font-size: clamp(40px, 5.6vw, 72px);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   font-weight: 600;
   margin: 0 0 24px;
-  max-width: 22ch;
+  max-width: 16ch;
   color: var(--text);
 }
 h1.h-title b { color: var(--mint); font-weight: 600 }
 .h-sub {
-  font-size: 16px;
-  line-height: 1.6;
+  font-size: 19px;
+  line-height: 1.65;
   color: var(--text-2);
-  max-width: 56ch;
-  margin: 0 0 32px;
+  max-width: 60ch;
+  margin: 0 0 36px;
   font-weight: 400;
 }
 .h-cta { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin-bottom: 40px }
@@ -293,195 +280,6 @@ h1.h-title b { color: var(--mint); font-weight: 600 }
 }
 .h-trust span { display: inline-flex; align-items: center; gap: 8px }
 .h-trust svg { width: 12px; height: 12px; color: var(--mint) }
-
-/* =================================================================
-   LIVE CALL CARD · hero right column
-================================================================= */
-.lcc {
-  width: 100%;
-  max-width: 420px;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7);
-  position: relative;
-}
-.lcc::before {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: calc(var(--radius-lg) + 2px);
-  background: linear-gradient(180deg, rgba(125, 211, 160, 0.14), transparent 40%);
-  pointer-events: none;
-  z-index: -1;
-}
-.lcc-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 14px;
-  border-bottom: 1px solid var(--line);
-}
-.lcc-live {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--mint);
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.lcc-livedot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-  background: var(--mint);
-  box-shadow: 0 0 12px var(--mint);
-  animation: blink 1.6s ease-in-out infinite;
-}
-.lcc-dur {
-  font-family: var(--mono);
-  font-size: 13px;
-  color: var(--text);
-  font-variant-numeric: tabular-nums;
-}
-.lcc-guest {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.lcc-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, var(--mint), var(--mint-d));
-  color: #0a1a11;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 700;
-  font-size: 13px;
-  flex-shrink: 0;
-}
-.lcc-who { flex: 1; min-width: 0 }
-.lcc-name {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text);
-  letter-spacing: -0.01em;
-}
-.lcc-meta {
-  font-family: var(--mono);
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 2px;
-}
-.lcc-langpill {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  padding: 3px 8px;
-  border-radius: 5px;
-  background: var(--mint-bg);
-  color: var(--mint);
-  border: 1px solid var(--mint-line);
-  font-weight: 600;
-}
-
-.lcc-wave {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3px;
-  height: 44px;
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 0 12px;
-}
-.lcc-bar {
-  flex: 1;
-  height: 40%;
-  background: var(--mint);
-  border-radius: 2px;
-  opacity: 0.5;
-  animation: lccBar 1.1s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 0.035s);
-  transform-origin: center;
-}
-@keyframes lccBar {
-  0%, 100% { transform: scaleY(0.35); opacity: 0.4 }
-  50%      { transform: scaleY(1);    opacity: 1 }
-}
-
-.lcc-line {
-  background: var(--bg-2);
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-.lcc-linelbl {
-  font-family: var(--mono);
-  font-size: 10.5px;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-.lcc-quote { position: relative }
-.lcc-say {
-  font-size: 13.5px;
-  color: var(--text-2);
-  line-height: 1.55;
-  font-style: italic;
-  border-left: 2px solid var(--mint);
-  padding-left: 10px;
-  display: block;
-}
-
-.lcc-cap {
-  background: var(--bg-2);
-  border: 1px solid var(--mint-line);
-  border-radius: 10px;
-  padding: 14px 16px;
-}
-.lcc-cap-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid var(--line);
-  font-family: var(--mono);
-  font-size: 11px;
-}
-.lcc-cap-l { color: var(--mint); font-weight: 600; letter-spacing: 0.06em }
-.lcc-cap-r { color: var(--muted) }
-.lcc-cap-body { display: flex; flex-direction: column; gap: 6px }
-.lcc-cap-row {
-  display: grid;
-  grid-template-columns: 80px 1fr;
-  gap: 12px;
-  font-size: 12.5px;
-  padding: 3px 0;
-}
-.lcc-cap-k { font-family: var(--mono); color: var(--muted); font-size: 11px }
-.lcc-cap-v { color: var(--text) }
-.lcc-cap-vmint { color: var(--mint); font-family: var(--mono) }
-.lcc-sev {
-  font-family: var(--mono);
-  font-size: 10px;
-  padding: 2px 7px;
-  border-radius: 4px;
-  background: var(--amber-bg);
-  color: var(--amber);
-  font-weight: 600;
-}
 
 /* =================================================================
    LOGO MARQUEE
@@ -1441,27 +1239,6 @@ h2.sec-h b { color: var(--mint); font-weight: 600 }
 @media (max-width: 1100px) { .agents-grid { grid-template-columns: repeat(3, 1fr) } }
 @media (max-width: 800px) { .agents-grid { grid-template-columns: repeat(2, 1fr) } }
 @media (max-width: 520px) { .agents-grid { grid-template-columns: 1fr } }
-
-/* =================================================================
-   ASK SECTION · standalone interactive Ask Veloce
-================================================================= */
-.ask-section .ask-section-inner { max-width: 720px }
-.ask-section .ask-h {
-  margin: 14px 0 12px;
-  font-size: clamp(26px, 3vw, 36px);
-  letter-spacing: -0.022em;
-  line-height: 1.15;
-  font-weight: 600;
-  color: var(--text);
-}
-.ask-section .ask-p {
-  color: var(--text-2);
-  font-size: 16px;
-  line-height: 1.65;
-  margin: 0 0 24px;
-  max-width: 58ch;
-}
-.ask-section .try { margin-top: 0 }
 
 /* =================================================================
    CTA
