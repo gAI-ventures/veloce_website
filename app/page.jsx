@@ -6,7 +6,7 @@ import ProductPeek from '@/components/ProductPeek'
 import ValueProp from '@/components/ValueProp'
 import Pipeline from '@/components/Pipeline'
 import Agents from '@/components/Agents'
-import AskVeloce from '@/components/AskVeloce'
+import AskSection from '@/components/AskSection'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
 
@@ -22,11 +22,7 @@ export default function Page() {
       <ValueProp />
       <Pipeline />
       <Agents />
-      <section className="pad">
-        <div className="wrap">
-          <AskVeloce />
-        </div>
-      </section>
+      <AskSection />
       <CTA />
       <Footer />
     </>

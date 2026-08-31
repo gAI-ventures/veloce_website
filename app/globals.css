@@ -1420,3 +1420,165 @@ footer { border-top: 1px solid var(--line); padding: 56px 0 36px }
   .stagger.in > *:nth-child(8) { transition-delay: 0.56s }
   .stagger.in > *:nth-child(9) { transition-delay: 0.64s }
 }
+
+/* =================================================================
+   HERO grid + live-call visual  (appended)
+================================================================= */
+.hero { padding: 96px 0 88px }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.hero-copy { max-width: 640px }
+.hero-visual { min-width: 0 }
+h1.h-title { max-width: 14ch }
+.h-sub { max-width: 54ch }
+
+@media (max-width: 980px) {
+  .hero { padding: 72px 0 56px }
+  .hero-grid { grid-template-columns: 1fr; gap: 44px }
+  .hero-copy { max-width: 720px }
+  .hero-visual { max-width: 560px; width: 100%; margin-inline: auto }
+}
+
+/* ---- Hero live-call card ---- */
+.hero-call {
+  background: linear-gradient(180deg, var(--surface-2) 0%, var(--surface) 100%);
+  border: 1px solid var(--line-2);
+  border-radius: var(--radius-lg);
+  padding: 22px 24px 20px;
+  box-shadow:
+    0 24px 60px -24px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(125,211,160,0.05),
+    inset 0 1px 0 rgba(255,255,255,0.02);
+}
+.hero-call-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 18px;
+}
+.hero-call-l {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+}
+.hero-call-live {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: var(--mint); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.hcl-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--mint);
+  animation: hcl-pulse 1.6s ease-in-out infinite;
+}
+@keyframes hcl-pulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(125,211,160,0.4); }
+  50%     { box-shadow: 0 0 0 7px rgba(125,211,160,0); }
+}
+.hero-call-sep { color: var(--muted-2) }
+.hero-call-prop { color: var(--text-2) }
+.hero-call-timer {
+  font-family: var(--mono); font-size: 13px; color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+
+.hero-call-guest {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 16px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin-bottom: 14px;
+}
+.hero-call-name { font-weight: 600; font-size: 15px; letter-spacing: -0.005em }
+.hero-call-sub {
+  font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  margin-top: 3px;
+}
+.hero-call-pill {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.08em;
+  padding: 5px 9px;
+  background: var(--mint-bg); color: var(--mint);
+  border: 1px solid var(--mint-line);
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.hero-call-wave {
+  display: flex; align-items: center; justify-content: center;
+  gap: 3px; height: 44px; margin: 4px 0 16px;
+}
+.hero-call-wave span {
+  display: block; width: 3px; border-radius: 2px;
+  background: var(--mint);
+  opacity: 0.55;
+  animation: hcl-wave 1.1s ease-in-out infinite;
+}
+.hero-call-wave span:nth-child(3n)  { background: var(--mint-d); opacity: 0.75 }
+.hero-call-wave span:nth-child(5n)  { opacity: 0.9 }
+@keyframes hcl-wave {
+  0%,100% { height: 6px; }
+  50%     { height: 34px; }
+}
+
+.hero-call-lines { display: grid; gap: 10px; margin-bottom: 16px }
+.hcl-msg {
+  display: flex; gap: 10px; align-items: flex-start;
+  font-size: 13.5px; line-height: 1.55; color: var(--text-2);
+}
+.hcl-who {
+  flex-shrink: 0;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+  padding: 3px 6px; border-radius: 4px;
+  margin-top: 1px;
+  font-weight: 600;
+}
+.hcl-a { background: var(--mint-bg);  color: var(--mint);  border: 1px solid var(--mint-line) }
+.hcl-g { background: var(--surface-3); color: var(--muted); border: 1px solid var(--line) }
+.hcl-msg mark {
+  background: rgba(125,211,160,0.16);
+  color: var(--text);
+  padding: 1px 3px; border-radius: 3px;
+}
+
+.hero-call-cap {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 13px;
+  background: var(--surface);
+  border: 1px dashed var(--mint-line);
+  border-radius: 10px;
+}
+.hcl-cap-l {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono); font-size: 11px;
+  flex-wrap: wrap;
+}
+.hcl-cap-lbl {
+  color: var(--mint); text-transform: uppercase; letter-spacing: 0.08em;
+}
+.hcl-cap-tag {
+  padding: 3px 7px;
+  background: var(--surface-3);
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--text-2);
+}
+.hcl-cap-sev {
+  background: var(--amber-bg);
+  color: var(--amber);
+  border-color: rgba(232,178,90,0.28);
+}
+.hcl-cap-id {
+  font-family: var(--mono); font-size: 11.5px; color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =================================================================
+   Ask section — tighter than default .pad, with proper header
+================================================================= */
+.ask-sec { padding: 72px 0 }
+.ask-sec-inner { max-width: 860px; margin: 0 auto }
+.ask-sec-head { max-width: 640px; margin: 0 0 28px }
+.ask-sec .kicker { margin-bottom: 10px }
+.ask-sec .sec-h { margin-bottom: 14px }
+.ask-sec .sec-lede { margin-bottom: 0 }
