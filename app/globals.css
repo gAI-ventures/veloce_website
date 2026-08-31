@@ -1582,3 +1582,17 @@ h1.h-title { max-width: 14ch }
 .ask-sec .kicker { margin-bottom: 10px }
 .ask-sec .sec-h { margin-bottom: 14px }
 .ask-sec .sec-lede { margin-bottom: 0 }
+
+/* =================================================================
+   Mobile responsiveness fixes (appended)
+================================================================= */
+.nav-login, .nav-cta { white-space: nowrap }
+.hcl-cap-id { white-space: nowrap }
+.hero-call-live { white-space: nowrap }
+
+@media (max-width: 640px) {
+  .try-in { flex-wrap: wrap; row-gap: 10px; padding: 12px }
+  .try-in .lead { flex-basis: 100%; margin-bottom: 2px }
+  .try-in input { flex: 1 1 100%; min-width: 0; padding: 8px 4px }
+  .try-btn { margin-left: auto; padding: 9px 20px }
+}

@@ -11,7 +11,6 @@ const PRODUCT = [
 const COMPANY = [
   { href: CONTACT_URL, label: 'Contact' },
   { href: DEMO_URL, label: 'Book a demo' },
-  { href: CONTACT_URL, label: 'Careers' },
 ]
 
 const LEGAL = [

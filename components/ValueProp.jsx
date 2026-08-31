@@ -33,7 +33,7 @@ export default function ValueProp() {
         <div className="reveal" style={{ maxWidth: 640 }} ref={introRef}>
           <div className="kicker">why now</div>
           <h2 className="sec-h">
-            Guests aren't waiting to <b>tell you</b> what went wrong.
+            Better reviews start with catching the issue <b>mid-stay</b>.
           </h2>
         </div>
 
