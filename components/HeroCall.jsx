@@ -12,17 +12,17 @@ export default function HeroCall() {
         <div className="hero-call-l">
           <span className="hero-call-live"><span className="hcl-dot" />Live · outbound</span>
           <span className="hero-call-sep">·</span>
-          <span className="hero-call-prop">Casa Blanca · Lisbon</span>
+          <span className="hero-call-prop">Urban Nest · Bangalore</span>
         </div>
         <div className="hero-call-timer">01:14</div>
       </div>
 
       <div className="hero-call-guest">
         <div>
-          <div className="hero-call-name">Isabel Ferreira</div>
+          <div className="hero-call-name">Priya Menon</div>
           <div className="hero-call-sub">Room 214 · check-in day</div>
         </div>
-        <div className="hero-call-pill">PT</div>
+        <div className="hero-call-pill">EN</div>
       </div>
 
       <div className="hero-call-wave" aria-hidden="true">
@@ -34,11 +34,11 @@ export default function HeroCall() {
       <div className="hero-call-lines">
         <div className="hcl-msg">
           <span className="hcl-who hcl-a">AI</span>
-          <span>Já se instalou bem no quarto?</span>
+          <span>Hi Priya, hope you're settled in nicely in 214?</span>
         </div>
         <div className="hcl-msg">
           <span className="hcl-who hcl-g">GST</span>
-          <span><mark>O ar condicionado está a fazer um barulho estranho</mark>, um zumbido.</span>
+          <span>All good, thanks. But <mark>the AC is making a strange humming noise</mark> since I got here.</span>
         </div>
       </div>
 
