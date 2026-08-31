@@ -1,6 +1,5 @@
 'use client'
 
-import AskVeloce from './AskVeloce'
 import { useReveal } from '@/hooks/useReveal'
 import { DEMO_URL } from '@/lib/siteConfig'
 
@@ -28,11 +27,11 @@ export default function Hero() {
           <div className="brand-line">Veloce · An AI ops layer for hospitality</div>
 
           <h1 className="h-title">
-            Run the property from <b>one dashboard</b>.
+            The <b>AI operating layer</b> for hospitality.
           </h1>
 
           <p className="h-sub">
-            Veloce calls your in-house guests, every day, in their language. Whatever they raise on the call turns into a tracked ticket the right person on your team can act on before checkout. It also picks up inbound calls, runs your housekeeping checklists, and gives you one place to ask what's happening across the property.
+            Veloce rings your in-house guests during their stay, captures what they raise as a structured ticket, and routes it to the right person on your team so it's resolved before checkout. Housekeeping, audits and reporting run in the same staff app your team will actually open.
           </p>
 
           <div className="h-cta">
@@ -48,15 +47,12 @@ export default function Hero() {
                 />
               </svg>
             </a>
-            <a className="btn btn-ghost" href="#how">See how it works</a>
           </div>
 
-          <AskVeloce />
-
           <div className="h-trust">
-            <span><Check /> Speaks every language ElevenLabs supports</span>
+            <span><Check /> Every major language, mid-call code-switching</span>
             <span><Check /> Built for multi-property groups</span>
-            <span><Check /> Live in a week, no IT project</span>
+            <span><Check /> Live in production today</span>
           </div>
         </div>
       </div>

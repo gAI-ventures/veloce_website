@@ -2,7 +2,7 @@ const ITEMS = [
   'Boutique hotel groups',
   'Serviced-stay portfolios',
   'Multi-property short-let operators',
-  'Premium villa collections',
+  'Villa collections',
   'Independent resort brands',
   'Heritage stays',
   'Corporate-serviced apartments',
