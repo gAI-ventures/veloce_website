@@ -16,7 +16,7 @@ const STEPS = [
     h: <>An AI voice that <b>calls every guest</b>, in their own language.</>,
     p: [
       <>Once during check-in day, at least once mid-stay, and again on check-out day. Complaints get raised while the guest is still in the room. Reviews get asked for while the stay is still warm. Nothing waits for the guest to bother walking down to the front desk.</>,
-      <>Runs in every language ElevenLabs supports. English, Spanish, French, Portuguese, Mandarin, Arabic, Hindi, and the sixty-odd more they cover, including mid-sentence code-switching where guests naturally do it.</>,
+      <>Runs in every major language, with mid-sentence code-switching where guests naturally do it. English, Spanish, French, Portuguese, Mandarin, Arabic, Hindi, and dozens more.</>,
       <>Inbound is on the same rail. Reservations, availability, small requests picked up day and night.</>,
     ],
     Visual: VoiceCard,
