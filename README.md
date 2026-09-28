@@ -1,19 +1,15 @@
 # Veloce site
 
-Next.js 14 (App Router) + TanStack Query + Zustand.
+Marketing site for veloce7.com. Next.js 14 (App Router), light mode only. The whole page is statically prerendered.
 
 ## Run locally
 
 ```bash
 npm install
-npm run dev
+npm run dev      # http://localhost:3000
 ```
 
-Opens at http://localhost:3000
-
-Copy `.env.example` to `.env` before starting the site. The public
-variables configure the product login, contact mail link, and Calendly demo
-destination.
+Copy `.env.example` to `.env` to override the public links locally. On Vercel, the same variables are set in the project settings.
 
 ## Build for production
 
@@ -22,50 +18,42 @@ npm run build
 npm start
 ```
 
-## Stack
-
-- **Next.js 14 (App Router)** — server components by default, `'use client'` where interactivity or hooks are needed
-- **TanStack Query** — wraps the `POST /api/ask` mock endpoint the hero "Ask Veloce" widget hits, so cache, retry, and mutation state are handled properly
-- **Zustand** — holds the current question and a small in-session history for the Ask Veloce widget, so state survives if we later split the input and the answer across pages
-
 ## Structure
 
 ```
 app/
-  layout.jsx              # HTML shell + fonts + Providers wrapper
-  page.jsx                # renders all sections in order
-  globals.css             # all styles (dark canvas + mint)
-  providers.jsx           # QueryClientProvider (client component)
-  api/
-    ask/route.js          # mock /api/ask endpoint (canned answers)
+  layout.jsx          # HTML shell, metadata, font
+  page.jsx            # renders every section in order
+  globals.css         # all styles and breakpoints
+  icon.svg, favicon.ico, apple-icon.png
 
 components/
-  Logo.jsx                # the canonical Veloce mark (three chevrons + wordmark)
-  Nav.jsx                 # sticky nav
-  Hero.jsx                # headline, sub, CTA, trust bullets
-  AskVeloce.jsx           # interactive Ask Veloce widget (TanStack Query + Zustand)
-  Marquee.jsx             # looping operator-category strip
-  Problem.jsx             # before/after visualization
-  ValueProp.jsx           # 01/02/03 numbered value prop
-  Pipeline.jsx            # five-step alternating pipeline
-  PipelineCards.jsx       # the five distinct demo cards
-  Agents.jsx              # five custom-agent cards
-  CTA.jsx                 # contact card
-  Footer.jsx              # four-column footer
+  Logo.jsx            # brand logo for light backgrounds (public/veloce-logo-light.png)
+  Nav.jsx             # client: sticky nav and mobile menu
+  Hero.jsx            # headline and CTAs
+  Convergence.jsx     # client: "Coming in / Handled" animation
+  Sections.jsx        # operators, problem stats, three steps, extra hours
+  Gains.jsx           # client: calculator state, shared with the extra-hours section
+  SavingsModel.jsx    # calculator UI (EUR, USD, AED, INR)
+  Closing.jsx         # FAQ, contact card, footer
+  Icons.jsx           # inline SVG icons and the Veloce mark
 
-hooks/
-  useReveal.js            # IntersectionObserver reveal-on-scroll
-  useStickyNav.js         # nav border on scroll
-
-store/
-  askStore.js             # Zustand store for the Ask Veloce widget
+lib/
+  siteConfig.js       # login, Calendly, contact links (from NEXT_PUBLIC_* env vars) and research sources
+  model.js            # savings model maths and default assumptions
 ```
 
 ## Editing content
 
-Most copy lives in the components. Change the hero headline in `components/Hero.jsx`, edit pipeline steps in `components/Pipeline.jsx`, swap the agents list in `components/Agents.jsx`.
+- Links: set `NEXT_PUBLIC_DEMO_URL`, `NEXT_PUBLIC_LOGIN_URL`, `NEXT_PUBLIC_CONTACT_URL`, `NEXT_PUBLIC_QUESTION_URL`, or change the fallbacks in `lib/siteConfig.js`.
+- Calculator defaults, currencies and assumptions: `lib/model.js`.
+- Copy lives in each component.
 
-Public destinations are configured in `.env` and read through
-`lib/siteConfig.js`.
+## Breakpoints
 
-Canned Ask Veloce answers live in `app/api/ask/route.js`. Replace that file with a real call to your backend when the time comes — the client component doesn't change.
+- Over 1100px: two-column hero with the animated wiring diagram.
+- 860px and below: the navigation collapses into a menu button.
+- 760px and below: phone layout. The hero animation switches to paired rows, and the calculator shows the result above the sliders.
+- 420px and below: small-phone adjustments.
+
+Motion respects the visitor's reduced-motion setting.
