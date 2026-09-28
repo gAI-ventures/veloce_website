@@ -12,14 +12,19 @@ const FAQS = [
 export function Faq() {
   return (
     <section className="wrap section" id="faq" aria-labelledby="faq-h">
-      <div className="sec-head center"><h2 id="faq-h">Questions operators ask</h2></div>
-      <div className="glass faq">
-        {FAQS.map((f) => (
-          <details key={f.q}>
-            <summary>{f.q}<Icon name="plus" /></summary>
-            <p>{f.a}</p>
-          </details>
-        ))}
+      <div className="faq-grid">
+        <div className="faq-head">
+          <h2 id="faq-h">Questions operators ask</h2>
+          <p>Something else on your mind? <a href={QUESTION_URL} {...ext}>Email a question</a> and Sooraj will reply within one business day.</p>
+        </div>
+        <div className="glass faq">
+          {FAQS.map((f) => (
+            <details key={f.q}>
+              <summary>{f.q}<Icon name="plus" /></summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -28,7 +33,7 @@ export function Faq() {
 export function Contact() {
   return (
     <section className="wrap contact-sec" id="contact" aria-labelledby="contact-h">
-      <div className="cta sheet">
+      <div className="cta">
         <div>
           <h2 id="contact-h">Bring one property to a 30-minute call</h2>
           <p>We’ll show you what Veloce would change there and what it’s worth.</p>

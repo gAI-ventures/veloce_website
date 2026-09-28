@@ -32,7 +32,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Colours, spacing, breakpoints | `app/globals.css` |
 | Hero headline and buttons | `components/Hero.jsx` |
 | "Coming in / Handled" animation | `components/Convergence.jsx` (client component) |
-| Operators strip, problem stats, three steps, "extra hours" | `components/Sections.jsx` |
+| Operators line, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
 | Calculator UI | `components/SavingsModel.jsx`; its state lives in `components/Gains.jsx` |
 | Calculator maths, currencies, default assumptions | `lib/model.js` |
 | FAQ, contact card, footer | `components/Closing.jsx` |

@@ -1,6 +1,6 @@
 import Nav from '@/components/Nav';
 import Hero from '@/components/Hero';
-import { Operators, Problem, Steps } from '@/components/Sections';
+import { Operators, Problem, Steps, Housekeeping } from '@/components/Sections';
 import Gains from '@/components/Gains';
 import { Faq, Contact, Footer } from '@/components/Closing';
 
@@ -14,6 +14,7 @@ export default function Page() {
         <Operators />
         <Problem />
         <Steps />
+        <Housekeeping />
         <Gains />
         <Faq />
         <Contact />

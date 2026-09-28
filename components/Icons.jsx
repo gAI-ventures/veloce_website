@@ -28,6 +28,9 @@ const paths = {
   menu: <path {...S} strokeWidth="1.8" d="M4 7h16M4 12h16M4 17h16" />,
   close: <path {...S} strokeWidth="1.8" d="M6 6l12 12M18 6L6 18" />,
   trend: <path {...S} strokeWidth="1.8" d="M3.5 17l6-6 4 4 7-7.5M15 7.5h5.5V13" />,
+  fall: <path {...S} strokeWidth="1.8" d="M3.5 7l6 6 4-4 7 7.5M15 16.5h5.5V11" />,
+  loop: <path {...S} strokeWidth="1.8" d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18.5 3v4h-4M5.5 21v-4h4" />,
+  wrench: <path {...S} d="M14.5 6.5a4 4 0 0 0 5 5L12 19a2.1 2.1 0 0 1-3-3l7.5-7.5a4 4 0 0 1-2-2zM14.5 6.5l2-2" />,
   cal: (
     <>
       <rect {...S} x="3.5" y="5" width="17" height="15.5" rx="2" />
