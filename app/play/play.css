@@ -35,6 +35,8 @@
   margin-left: auto; width: 44px; height: 44px; display: inline-flex; align-items: center; justify-content: center;
   border: 2px solid var(--line-2); border-radius: var(--r-ctl); background: var(--panel-2); cursor: pointer;
 }
+.g-sound { margin-left: auto; }
+.g-sound + .g-pause { margin-left: 0; }
 .g-pause:hover:not(:disabled) { border-color: var(--accent); }
 .g-pause:disabled { opacity: .45; cursor: default; }
 
@@ -184,6 +186,9 @@
 }
 @media (max-width: 420px) {
   .g-hud .g-props { display: none; }
+  .g-hud { gap: 4px; }
+  .g-time > span { display: none; }
+  .g-pause { width: 36px; height: 36px; }
   .g-compare { grid-template-columns: 1fr; }
 }
 @media (prefers-reduced-motion: reduce) {

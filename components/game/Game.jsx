@@ -3,9 +3,10 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   createGame, step, rating, answer, dispatch, decide, activatePower, canDispatch, timeLeft, live,
-  W, H, DURATION, PROPS, CHANNELS, ROLES, WIN_RATING,
+  W, H, DURATION, POWER_AT, PROPS, CHANNELS, ROLES, WIN_RATING,
 } from '@/lib/game/engine';
 import { drawBackground, drawFrame, propAt, ICONS, ICON_COLOR, MARK, COLORS, LOOK } from '@/lib/game/draw';
+import { createMusic } from '@/lib/game/music';
 import { DEMO_URL, ext } from '@/lib/siteConfig';
 
 // ---------- small pixel pieces for the DOM ----------
@@ -110,6 +111,7 @@ export default function Game() {
   const [selStaff, setSelStaff] = useState(null);
   const [toast, setToast] = useState(null);
   const [banner, setBanner] = useState(false);
+  const [soundOn, setSoundOn] = useState(true);
 
   const gRef = useRef(null);
   const uiRef = useRef({ selectedTicket: null, selectedStaff: null, pops: [], reduced: false });
@@ -119,6 +121,13 @@ export default function Game() {
   const toastTimer = useRef(null);
   const phaseRef = useRef(phase);
   phaseRef.current = phase;
+  const musicRef = useRef(null);
+  const soundRef = useRef(soundOn);
+  soundRef.current = soundOn;
+
+  const sfx = useCallback((kind) => {
+    if (soundRef.current && musicRef.current) musicRef.current.sfx(kind);
+  }, []);
 
   uiRef.current.selectedTicket = selTicket;
   uiRef.current.selectedStaff = selStaff;
@@ -143,7 +152,15 @@ export default function Game() {
     workRef.current = work;
     gRef.current = createGame();
     paint(performance.now());
-    return () => clearTimeout(toastTimer.current);
+    try {
+      if (window.localStorage.getItem('veloce-game-sound') === 'off') setSoundOn(false);
+    } catch (e) {
+      // Storage can be blocked; sound stays on.
+    }
+    return () => {
+      clearTimeout(toastTimer.current);
+      if (musicRef.current) musicRef.current.close();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -188,17 +205,24 @@ export default function Game() {
       last = now;
 
       for (const e of g.events) {
-        if (e.type === 'review') uiRef.current.pops.push({ ...e, born: now });
-        else if (e.type === 'wrong') {
+        if (e.type === 'review') {
+          uiRef.current.pops.push({ ...e, born: now });
+          if (e.stars >= 4) sfx('good');
+          else if (e.stars <= 2) sfx('bad');
+        } else if (e.type === 'wrong') {
+          sfx('wrong');
           const s = g.staff.find((x) => x.id === e.staffId);
           say(`${first(s.name)} went to ${PROPS[e.prop].name}, but it is not their job`);
         } else if (e.type === 'toast') say(e.text);
         else if (e.type === 'power') {
+          sfx('power');
+          if (soundRef.current && musicRef.current) musicRef.current.play('veloce');
           setBanner(true);
           setTimeout(() => setBanner(false), 4200);
         }
       }
       g.events.length = 0;
+      if (musicRef.current) musicRef.current.setIntensity(g.t / POWER_AT);
       uiRef.current.pops = uiRef.current.pops.filter((p) => now - p.born < 1400);
       if (g.unlocked !== unlocked) {
         unlocked = g.unlocked;
@@ -231,7 +255,36 @@ export default function Game() {
     };
     raf = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(raf);
-  }, [phase, paint, say]);
+  }, [phase, paint, say, sfx]);
+
+  // Music follows the game: plays while playing, holds while paused, jingle at the end.
+  useEffect(() => {
+    const m = musicRef.current;
+    if (!m) return;
+    if (!soundOn) {
+      m.pause();
+      return;
+    }
+    if (phase === 'play') {
+      m.resume();
+      m.play(gRef.current.veloce ? 'veloce' : 'rush');
+    } else if (phase === 'paused') m.pause();
+    else if (phase === 'over') {
+      m.stop();
+      m.sfx(gRef.current.result === 'win' ? 'win' : 'lose');
+    }
+  }, [phase, soundOn]);
+
+  const toggleSound = useCallback(() => {
+    setSoundOn((on) => {
+      try {
+        window.localStorage.setItem('veloce-game-sound', on ? 'off' : 'on');
+      } catch (e) {
+        // Ignore blocked storage.
+      }
+      return !on;
+    });
+  }, []);
 
   // Pause when the tab is hidden.
   useEffect(() => {
@@ -243,6 +296,9 @@ export default function Game() {
   }, []);
 
   const start = () => {
+    // Audio can only start from a tap or click, so create it here.
+    if (!musicRef.current) musicRef.current = createMusic();
+    if (musicRef.current) musicRef.current.stop();
     gRef.current = createGame();
     uiRef.current.pops = [];
     setSelTicket(null);
@@ -258,18 +314,20 @@ export default function Game() {
   const pickTicket = (tk) => {
     if (!playing || !tk || !live(tk)) return;
     if (!tk.answered) {
-      answer(g, tk.id);
+      if (answer(g, tk.id)) sfx('tap');
     } else if (tk.role === 'owner') {
       decide(g, tk.id);
     } else if (tk.status === 'open') {
       if (selStaff) {
         const s = g.staff.find((x) => x.id === selStaff);
         if (dispatch(g, tk.id, s.id)) {
+          sfx('send');
           setSelStaff(null);
           setSelTicket(null);
         }
       } else {
         setSelTicket(selTicket === tk.id ? null : tk.id);
+        sfx('tap');
       }
     }
     setFrame((f) => f + 1);
@@ -283,11 +341,13 @@ export default function Game() {
     }
     if (selTicket) {
       if (dispatch(g, selTicket, s.id)) {
+        sfx('send');
         setSelTicket(null);
         setSelStaff(null);
       }
     } else {
       setSelStaff(selStaff === s.id ? null : s.id);
+      sfx('tap');
     }
     setFrame((f) => f + 1);
   };
@@ -296,11 +356,15 @@ export default function Game() {
     if (activatePower(g)) setFrame((f) => f + 1);
   };
 
-  // Keyboard: 1 to 4 pick staff, V switches on Veloce, Space pauses.
+  // Keyboard: 1 to 4 pick staff, V switches on Veloce, M mutes, Space pauses.
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.closest && e.target.closest('input, textarea')) return;
       const p = phaseRef.current;
+      if (e.key === 'm' || e.key === 'M') {
+        toggleSound();
+        return;
+      }
       if (e.code === 'Space' && (p === 'play' || p === 'paused')) {
         e.preventDefault();
         setPhase(p === 'play' ? 'paused' : 'play');
@@ -354,6 +418,22 @@ export default function Game() {
         {g && g.veloce && (
           <div className="g-on"><VeloceMark /> Veloce on</div>
         )}
+        <button
+          type="button"
+          className="g-pause g-sound"
+          onClick={toggleSound}
+          aria-pressed={soundOn}
+          aria-label={soundOn ? 'Mute music and sound' : 'Turn on music and sound'}
+        >
+          <svg viewBox="0 0 10 10" width="16" height="16" aria-hidden="true">
+            <path d="M1 3.5h2l2.5-2v7l-2.5-2h-2z" fill="currentColor" />
+            {soundOn ? (
+              <path d="M7 3.5v3M8.5 2.5v5" stroke="currentColor" strokeWidth="1" />
+            ) : (
+              <path d="M6.8 3.3l2.4 3.4M9.2 3.3L6.8 6.7" stroke="currentColor" strokeWidth="1" />
+            )}
+          </svg>
+        </button>
         <button
           type="button"
           className="g-pause"
@@ -497,12 +577,12 @@ function StartScreen({ onStart }) {
         </ul>
         <p className="g-how">
           Tap a complaint, then tap who should fix it. Answer calls first. Staff come back to the office after every
-          job. The game lasts two minutes and has no sound.
+          job. The game lasts two minutes and has music, which you can mute.
         </p>
         <div className="g-actions">
           <button type="button" className="btn btn-primary" onClick={onStart}>Start the game</button>
         </div>
-        <p className="g-keys">On a keyboard: 1 to 4 pick staff, Space pauses.</p>
+        <p className="g-keys">On a keyboard: 1 to 4 pick staff, M mutes, Space pauses.</p>
       </div>
     </div>
   );
