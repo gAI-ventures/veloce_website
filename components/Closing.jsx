@@ -71,6 +71,7 @@ export function Footer() {
             <li><a href="#helps">How it helps</a></li>
             <li><a href="#gains">Your gains</a></li>
             <li><a href="#faq">FAQ</a></li>
+            <li><a href="/play">Play the game</a></li>
           </ul>
         </div>
         <div>
