@@ -14,6 +14,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 - `npm run dev` runs the site at http://localhost:3000
 - `npm run build` must pass before any commit.
 - Do not run `npm audit fix --force`. It jumps to a newer major Next.js version and breaks the build. Upgrading Next.js is a separate, deliberate task.
+- `npm run build` overwrites `.next`, which breaks a running `npm run dev`. Stop the dev server first, or afterwards delete `.next` and start it again.
 
 ## Repos and deployment
 
