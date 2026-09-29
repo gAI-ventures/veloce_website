@@ -1,9 +1,13 @@
+import { Hanken_Grotesk, Newsreader } from 'next/font/google';
 import './globals.css';
+
+const sans = Hanken_Grotesk({ subsets: ['latin'], variable: '--f-sans', display: 'swap' });
+const serif = Newsreader({ subsets: ['latin'], axes: ['opsz'], style: ['normal', 'italic'], variable: '--f-serif', display: 'swap' });
 
 export const metadata = {
   title: 'Veloce | Hospitality operations platform',
   description:
-    'Veloce catches guest issues during the stay, gets the right person to fix them, and keeps every property in one place. Higher ratings, more bookings, less time on operations.',
+    'Veloce hears about guest problems while the guest is still there, gets them to the right person, and keeps every property in one place. Higher ratings, more bookings, less time on operations.',
   metadataBase: new URL('https://www.veloce7.com'),
   openGraph: {
     title: 'Veloce | Hospitality operations platform',
@@ -18,21 +22,13 @@ export const viewport = {
   width: 'device-width',
   initialScale: 1,
   viewportFit: 'cover',
-  themeColor: '#E8ECE5',
+  themeColor: '#ffffff',
   colorScheme: 'light',
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap"
-        />
-      </head>
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
       <body>{children}</body>
     </html>
   );
