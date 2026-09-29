@@ -47,13 +47,13 @@ export default function SavingsModel({ currency, setCurrency, inputs, setInput, 
 
   return (
     <section className="wrap section" id="gains" aria-labelledby="gains-h">
-      <div className="sec-head">
+      <div className="sec-head split">
         <h2 id="gains-h">What a {inputs.properties}-property operation gains with Veloce</h2>
-        <p className="lede">Adjust it to your portfolio. Based on published hospitality research and our time estimates.</p>
+        <p className="lede">Move the sliders to match your portfolio. It’s based on published hospitality research and our own time estimates.</p>
       </div>
 
       <div className="model">
-        <div className="glass inputs">
+        <div className="inputs">
           <h3>Your portfolio</h3>
           <p>Figures are per year unless marked.</p>
           <div className="seg" role="group" aria-label="Currency">
@@ -90,7 +90,7 @@ export default function SavingsModel({ currency, setCurrency, inputs, setInput, 
           </details>
         </div>
 
-        <div className="glass results" aria-live="polite">
+        <div className="results" aria-live="polite">
           <div className="gain">
             <p className="l">Added to your bottom line each year with Veloce</p>
             <p className="amt">+{money(r.total)}</p>

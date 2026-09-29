@@ -7,7 +7,6 @@ import { Faq, Contact, Footer } from '@/components/Closing';
 export default function Page() {
   return (
     <>
-      <div className="field" aria-hidden="true"><i className="a1" /><i className="a2" /><i className="a3" /></div>
       <Nav />
       <main>
         <Hero />

@@ -3,10 +3,10 @@ import Logo from './Logo';
 import { DEMO_URL, LOGIN_URL, CONTACT_URL, QUESTION_URL, CONTACT_EMAIL, COMPANY_URL, ext } from '@/lib/siteConfig';
 
 const FAQS = [
-  { q: 'Do my staff need to learn new software?', a: 'No. Caretakers and housekeeping can work from WhatsApp. Managers use a web app for the full picture.' },
-  { q: 'Does Veloce replace my PMS?', a: 'No. It works alongside your PMS and channel manager, and handles what happens during the stay.' },
-  { q: 'How do guests hear from Veloce?', a: 'A short call or WhatsApp message during their stay. Anything they raise goes to your team, and decisions like refunds stay with you.' },
-  { q: 'What does it cost?', a: 'It depends on the number of properties and the channels you use. We share pricing on the call, with an estimate for your portfolio.' },
+  { q: 'Do my staff need to learn new software?', a: 'No. Caretakers and housekeepers keep using WhatsApp. Managers get a web app with the full picture.' },
+  { q: 'Does Veloce replace my PMS?', a: 'No. It sits alongside your PMS and channel manager and looks after what happens during the stay.' },
+  { q: 'How do guests hear from Veloce?', a: 'A short call or WhatsApp message during their stay. Whatever they raise goes to your team, and things like refunds are still your call.' },
+  { q: 'What does it cost?', a: 'It depends on how many properties you have and which channels you use. We’ll share pricing on the call, with an estimate for your portfolio.' },
 ];
 
 export function Faq() {
@@ -15,9 +15,9 @@ export function Faq() {
       <div className="faq-grid">
         <div className="faq-head">
           <h2 id="faq-h">Questions operators ask</h2>
-          <p>Something else on your mind? <a href={QUESTION_URL} {...ext}>Email a question</a> and Sooraj will reply within one business day.</p>
+          <p>Something else on your mind? <a href={QUESTION_URL} {...ext}>Email a question</a> and Sooraj will get back to you within a working day.</p>
         </div>
-        <div className="glass faq">
+        <div className="faq">
           {FAQS.map((f) => (
             <details key={f.q}>
               <summary>{f.q}<Icon name="plus" /></summary>
@@ -36,17 +36,17 @@ export function Contact() {
       <div className="cta">
         <div>
           <h2 id="contact-h">Bring one property to a 30-minute call</h2>
-          <p>We’ll show you what Veloce would change there and what it’s worth.</p>
+          <p>We’ll walk through what Veloce would change there and what it’s worth to you.</p>
           <div className="cta-row">
             <a className="btn btn-primary" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
-            <a className="btn btn-ghost" href={QUESTION_URL} {...ext}>Email a question</a>
+            <a className="btn btn-on-dark" href={QUESTION_URL} {...ext}>Email a question</a>
           </div>
         </div>
-        <div className="glass contact">
+        <div className="contact">
           <span className="av">SK</span><b>Sooraj Kamath</b><small>gAI Ventures</small>
           <ul>
             <li><a href={CONTACT_URL} {...ext}>{CONTACT_EMAIL}</a></li>
-            <li>Replies within one business day</li>
+            <li>Replies within a working day</li>
             <li>NDA on request</li>
           </ul>
         </div>
@@ -69,7 +69,7 @@ export function Footer() {
           <ul>
             <li><a href="#problem">Why it matters</a></li>
             <li><a href="#helps">How it helps</a></li>
-            <li><a href="#gains">Your gains</a></li>
+            <li><a href="#gains">See the impact</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="/play">Play the game</a></li>
           </ul>

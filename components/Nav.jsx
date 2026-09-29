@@ -8,7 +8,7 @@ import { DEMO_URL, LOGIN_URL, ext } from '@/lib/siteConfig';
 const SECTIONS = [
   { href: '#problem', label: 'Why it matters' },
   { href: '#helps', label: 'How it helps' },
-  { href: '#gains', label: 'Your gains' },
+  { href: '#gains', label: 'See the impact' },
   { href: '#faq', label: 'FAQ' },
 ];
 

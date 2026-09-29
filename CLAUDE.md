@@ -40,6 +40,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Links and research sources | `lib/siteConfig.js` |
 | Logo | `components/Logo.jsx` using `public/veloce-logo-light.png` |
 | Icons and the chevron mark | `components/Icons.jsx` |
+| Game at `/play` | `components/game/Game.jsx` (screens and text), `lib/game/engine.js` (rules and timing), `app/play/play.css` |
 
 Components are server components unless they need state or effects. Only then add `'use client'`, as `Nav`, `Convergence` and `Gains` do.
 
@@ -58,13 +59,15 @@ Components are server components unless they need state or effects. Only then ad
 - **Keep copy short.** Prefer a graphic to a paragraph. One line under a heading is usually enough.
 - Every statistic needs a source link next to it. No unverifiable claims.
 - Sentence case. Buttons say exactly what happens, for example "Book a 30-minute call".
+- Write like a person talking to an operator: "your guest", "we'll", plain verbs. Avoid stiff phrasing such as "is logged" or "supervisors see" when a simpler sentence works.
 
 ## Design rules
 
 - **Light mode only.** No dark mode and no theme toggle. Dark mode belongs to the Veloce app, not this site.
-- Mist glass style: sage gradient background with soft colour pools, translucent glass panels (`.glass`, `.sheet`), and less rounded corners (8 to 14px).
-- Accent green `#377863`; brand green `#0a5c4a` (logo and mark). Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
-- Font: Source Sans 3. The logo is the brand PNG; do not redraw it as live text.
+- White page with Veloce green as the main colour. The hero and contact panels use `public/pool-deep.webp` (blurred sunlight on pool water, in Veloce green) with a fine dot grid; product panels (`.stage`) use the pale `public/pool-light.webp`. White product cards sit on them with a soft shadow. No glass effects on panels or cards. Corners: 10px controls, 16px cards, 24px panels.
+- Reference points: smallest.ai (white space, plain layout, heading left and short text right) and cardboard.ai (serif headlines, product screens with short captions).
+- Brand green `#0a5c4a` for buttons, marks and key numbers; accent green `#377863` for small details. Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
+- Fonts, loaded with `next/font` in `app/layout.jsx`: Newsreader (serif) for h1, h2 and large numbers; Hanken Grotesk for everything else. Avoid generic AI-site fonts (Inter, DM Sans, Manrope, Space Grotesk, Geist). The logo is the brand PNG; do not redraw it as live text.
 - Avoid generic template tells: all-caps labels, monospace labels, "01 / 02 / 03" numbering (unless the content really is a sequence), an arrow at the end of links, and middle-dot separated labels.
 - One animation moment (the hero). No fade-in-on-scroll effects on every section. Respect reduced motion.
 - **Must stay mobile responsive.** Breakpoints: 1100px, 860px (menu button), 760px (phone layout), 420px (small phones). There must be no sideways scrolling at 360px.
@@ -88,3 +91,9 @@ Components are server components unless they need state or effects. Only then ad
 2. Check the page at 1440px and 390px wide: no sideways scrolling, and the menu, hero animation and calculator all work.
 3. Search the changed files for em dashes (`—`) and `href="#"`.
 4. Tell the owner which files changed and what the change looks like.
+
+## Game (/play)
+
+- One minute long. The player routes complaints for the first 40 seconds; Veloce switches itself on for the last 20 (`DURATION` and `POWER_AT` in `lib/game/engine.js`).
+- The map and icons are pixel art. All text, including instructions, uses the site fonts, not a pixel font.
+- The end screen compares the lowest rating before Veloce with the highest rating after, and leads to "Book a 30-minute call".

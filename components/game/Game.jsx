@@ -2,8 +2,8 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  createGame, step, rating, answer, dispatch, decide, activatePower, canDispatch, timeLeft, live,
-  W, H, DURATION, POWER_AT, PROPS, CHANNELS, ROLES, WIN_RATING,
+  createGame, step, rating, answer, dispatch, decide, canDispatch, timeLeft, live,
+  W, H, DURATION, POWER_AT, PROPS, CHANNELS, ROLES,
 } from '@/lib/game/engine';
 import { drawBackground, drawFrame, propAt, ICONS, ICON_COLOR, MARK, COLORS, LOOK } from '@/lib/game/draw';
 import { createMusic } from '@/lib/game/music';
@@ -352,11 +352,7 @@ export default function Game() {
     setFrame((f) => f + 1);
   };
 
-  const powerUp = () => {
-    if (activatePower(g)) setFrame((f) => f + 1);
-  };
-
-  // Keyboard: 1 to 4 pick staff, V switches on Veloce, M mutes, Space pauses.
+  // Keyboard: 1 to 4 pick staff, M mutes, Space pauses.
   useEffect(() => {
     const onKey = (e) => {
       if (e.target.closest && e.target.closest('input, textarea')) return;
@@ -373,7 +369,6 @@ export default function Game() {
       if (p !== 'play') return;
       const n = Number(e.key);
       if (n >= 1 && n <= 4) pickStaff(gRef.current.staff[n - 1]);
-      if (e.key === 'v' || e.key === 'V') powerUp();
       if (e.key === 'Escape') {
         setSelTicket(null);
         setSelStaff(null);
@@ -401,7 +396,7 @@ export default function Game() {
   const tickets = g ? g.tickets.filter(live) : [];
 
   return (
-    <div className={`game sheet ${g && g.veloce ? 'is-veloce' : ''}`}>
+    <div className={`game ${g && g.veloce ? 'is-veloce' : ''}`}>
       <div className="g-hud">
         <div className={`g-rating ${tone}`} aria-label={`Property rating ${fmtRating(r)} out of 5`}>
           <Stars value={r} />
@@ -415,8 +410,13 @@ export default function Game() {
           <span>Properties</span>
           <b>{g ? g.unlocked : 3}</b>
         </div>
-        {g && g.veloce && (
-          <div className="g-on"><VeloceMark /> Veloce on</div>
+        {g && g.veloce ? (
+          <div className="g-on"><VeloceMark /> Veloce is running things</div>
+        ) : (
+          <div className="g-next" aria-label="Time until Veloce switches on">
+            <span>Veloce starts in</span>
+            <b>{fmtTime(Math.max(0, POWER_AT - (g ? g.t : 0)))}</b>
+          </div>
         )}
         <button
           type="button"
@@ -458,19 +458,10 @@ export default function Game() {
             role="img"
             aria-label="Map of your properties, the office and your staff"
           />
-          {g && g.power === 'available' && playing && (
-            <button type="button" className="g-power" onClick={powerUp}>
-              <VeloceMark scale={3} />
-              <span>
-                <b>Switch on Veloce</b>
-                <small>Calls and messages logged and routed for you</small>
-              </span>
-            </button>
-          )}
           {banner && (
             <div className="g-banner" role="status">
               <VeloceMark scale={3} />
-              <p><b>Veloce is on.</b> Every complaint is logged and sent straight to the right person. Your staff get their next job without coming back to the office.</p>
+              <p><b>Veloce is on for the last 20 seconds.</b> Complaints are logged and sent to the right person for you, and staff go straight to their next job. You only approve late check-outs and extra nights.</p>
             </div>
           )}
           {toast && !banner && <p className="g-toast" key={toast.id} role="status">{toast.text}</p>}
@@ -565,24 +556,35 @@ function StartScreen({ onStart }) {
     <div className="g-over">
       <div className="g-card">
         <h2>Keep your rating up</h2>
-        <p>
-          Guests report problems by phone, on WhatsApp, through caretakers and through property owners. Send each
-          one to the right person before it turns into a bad review.
+        <p className="g-intro">
+          A one-minute game. For the first 40 seconds you handle guest complaints the usual way. For the last 20,
+          Veloce takes over and you watch what happens to your rating.
         </p>
+
+        <div className="g-cols">
+        <div>
+        <h3>How to play</h3>
+        <ol className="g-steps">
+          <li><b>Answer calls.</b> A red, ringing complaint is a guest on the phone. Tap it to pick up.</li>
+          <li><b>Send the right person.</b> Tap a complaint, then tap the staff member who should fix it.</li>
+          <li><b>Be quick.</b> Each complaint has a timer bar. The longer a guest waits, the lower their review.</li>
+        </ol>
+        </div>
+        <div>
+        <h3>Who fixes what</h3>
         <ul className="g-legend">
-          <li><IssueIcon name="ac" /><IssueIcon name="drop" /><IssueIcon name="bolt" /><span><b>Caretakers</b> repair AC, water and power</span></li>
-          <li><IssueIcon name="towel" /><IssueIcon name="broom" /><span><b>Housekeeper</b> handles towels, sheets and cleaning</span></li>
-          <li><IssueIcon name="key" /><IssueIcon name="note" /><span><b>Ops manager</b> sorts out keys, door codes and noise</span></li>
-          <li><IssueIcon name="clock" /><span><b>You</b> approve late check-outs and extra nights</span></li>
+          <li><span className="g-ico"><IssueIcon name="ac" /><IssueIcon name="drop" /></span><span><b>Caretakers</b> fix AC, water and power</span></li>
+          <li><span className="g-ico"><IssueIcon name="towel" /><IssueIcon name="broom" /></span><span><b>Housekeeper</b> handles towels, sheets and cleaning</span></li>
+          <li><span className="g-ico"><IssueIcon name="key" /><IssueIcon name="note" /></span><span><b>Ops manager</b> sorts out keys, door codes and noise</span></li>
+          <li><span className="g-ico"><IssueIcon name="clock" /></span><span><b>You</b> approve late check-outs and extra nights. Tap them to say yes.</span></li>
         </ul>
-        <p className="g-how">
-          Tap a complaint, then tap who should fix it. Answer calls first. Staff come back to the office after every
-          job. The game lasts two minutes and has music, which you can mute.
-        </p>
+        </div>
+        </div>
+
         <div className="g-actions">
           <button type="button" className="btn btn-primary" onClick={onStart}>Start the game</button>
         </div>
-        <p className="g-keys">On a keyboard: 1 to 4 pick staff, M mutes, Space pauses.</p>
+        <p className="g-keys">There is music, which you can mute. On a keyboard, 1 to 4 picks staff, M mutes and Space pauses.</p>
       </div>
     </div>
   );
@@ -594,17 +596,17 @@ function EndScreen({ g, onAgain }) {
   return (
     <div className="g-over">
       <div className="g-card">
-        <h2>{win ? `You reached a ${WIN_RATING} rating` : `Time is up. Your rating is ${fmtRating(end)}`}</h2>
+        <h2>{win ? `You finished on ${fmtRating(end)} stars` : `Time's up. You finished on ${fmtRating(end)} stars`}</h2>
         <div className="g-compare">
           <div className="bad">
             <span>Before Veloce</span>
             <b>{fmtRating(g.low)}</b>
-            <small>Lowest rating while you routed every complaint yourself</small>
+            <small>Lowest rating in the first 40 seconds, when you routed everything yourself</small>
           </div>
           <div className="good">
             <span>With Veloce</span>
             <b>{fmtRating(Math.max(g.highAfter, end))}</b>
-            <small>Highest rating once complaints were logged and routed for you</small>
+            <small>Highest rating in the last 20 seconds, with Veloce routing for you</small>
           </div>
         </div>
         <p>
@@ -614,7 +616,7 @@ function EndScreen({ g, onAgain }) {
         </p>
         <div className="g-actions">
           <a className="btn btn-primary" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
-          <button type="button" className="btn btn-ghost" onClick={onAgain}>Play again</button>
+          <button type="button" className="btn btn-quiet" onClick={onAgain}>Play again</button>
         </div>
       </div>
     </div>

@@ -3,28 +3,30 @@ import { Icon } from './Icons';
 export function Operators() {
   return (
     <section className="wrap ops" aria-label="Who Veloce is for">
-      <p>
-        Built for operators running <b>serviced apartments</b>, <b>short-let portfolios</b>, <b>boutique hotel groups</b>,{' '}
-        <b>villa collections</b> and <b>heritage stays</b>.
-      </p>
+      <p className="ops-lead">Made for the people running</p>
+      <ul>
+        {['Serviced apartments', 'Short-let portfolios', 'Boutique hotel groups', 'Villa collections', 'Heritage stays'].map((o) => (
+          <li key={o}>{o}</li>
+        ))}
+      </ul>
     </section>
   );
 }
 
 const TODAY = [
-  { t: 'Day 1, 21:40', p: 'The guest tells the caretaker the AC isn’t cooling.', w: 'Caretaker’s phone', icon: 'user' },
-  { t: 'Day 1, 22:05', p: 'The caretaker calls the owner, who says to look at it tomorrow.', w: 'Owner’s phone', icon: 'phone' },
-  { t: 'Day 2, 10:15', p: 'The ops manager sees it in a group chat and asks which room.', w: 'WhatsApp group', icon: 'chat' },
+  { t: 'Day 1, 21:40', p: 'Your guest tells the caretaker the AC isn’t cooling.', w: 'Caretaker’s phone', icon: 'user' },
+  { t: 'Day 1, 22:05', p: 'The caretaker rings the owner, who says to look at it tomorrow.', w: 'Owner’s phone', icon: 'phone' },
+  { t: 'Day 2, 10:15', p: 'Your ops manager spots it in a group chat and asks which room.', w: 'WhatsApp group', icon: 'chat' },
   { t: 'Day 2, 13:30', p: 'The AC technician can’t come until Thursday.', w: 'Vendor call', icon: 'wrench' },
   { t: 'Day 2, 20:10', p: 'The guest complains again, this time at the front desk.', w: 'Front desk', icon: 'loop', again: true },
-  { t: 'Day 3, 11:00', p: 'The guest checks out. Nobody confirmed a fix.', w: 'Front desk', icon: 'desk' },
+  { t: 'Day 3, 11:00', p: 'They check out. Nobody ever confirmed a fix.', w: 'Front desk', icon: 'desk' },
   { t: 'Day 10', p: 'A 3-star review: “The AC never worked.”', w: 'Review site', icon: 'star', bad: true },
 ];
 
 const WITH = [
-  { t: 'Day 1, 18:22', p: 'A check-in call. The guest mentions the AC.', w: 'Voice call', icon: 'phone' },
-  { t: '18:24', p: 'Logged for Room 401 and sent to Ravi on WhatsApp.', w: 'Veloce', icon: 'chat' },
-  { t: '19:06', p: 'Fixed before dinner, and the guest is told.', w: 'Closed', icon: 'check', good: true },
+  { t: 'Day 1, 18:22', p: 'On the check-in call, the guest mentions the AC.', w: 'Voice call', icon: 'phone' },
+  { t: '18:24', p: 'It’s logged for Room 401 and sent to Ravi on WhatsApp.', w: 'Veloce', icon: 'chat' },
+  { t: '19:06', p: 'Fixed before dinner, and the guest hears back.', w: 'Closed', icon: 'check', good: true },
   { t: 'Day 4', p: 'A 5-star review: “They sorted the AC within the hour.”', w: 'Review site', icon: 'star', good: true },
 ];
 
@@ -60,17 +62,16 @@ function Lane({ title, meta, items, variant }) {
 export function Problem() {
   return (
     <section className="wrap section" id="problem" aria-labelledby="problem-h">
-      <div className="sec-head">
+      <div className="sec-head split">
         <h2 id="problem-h">Most guest problems reach you after checkout</h2>
-        <p className="lede">They’re spread across phones and chat groups, so the review is often the first record.</p>
+        <p className="lede">They get lost between phones and group chats, so the first you hear of it is often the review.</p>
       </div>
 
       <div className="compare" aria-label="The same complaint, today and with Veloce">
         <Lane title="Today" meta="6 handoffs, 10 days" items={TODAY} variant="today" />
         <Lane title="With Veloce" meta="Fixed in 44 minutes" items={WITH} variant="with" />
       </div>
-      <p className="fine example">An example of one complaint at one property.</p>
-
+      <p className="fine example">One complaint at one property, as an example.</p>
     </section>
   );
 }
@@ -165,15 +166,18 @@ function BoardVisual() {
 }
 
 const ROWS = [
-  { h: 'Hear it early', p: 'Guests are called or messaged during the stay. Caretakers and owners report into the same list.', v: <CallVisual /> },
-  { h: 'Get it fixed', p: 'The right person gets it on WhatsApp and is reminded until it’s done. The guest hears back.', v: <RouteVisual /> },
-  { h: 'Learn what breaks', p: 'Repeat faults are flagged across your properties before the next guest notices.', v: <BoardVisual /> },
+  { h: 'Hear it early', p: 'Guests get a quick call or WhatsApp during their stay. Caretakers and owners report into the same list.', v: <CallVisual /> },
+  { h: 'Get it fixed', p: 'The right person gets it on WhatsApp and a nudge until it’s done. Then the guest hears back.', v: <RouteVisual /> },
+  { h: 'Learn what breaks', p: 'When the same thing keeps breaking, you find out before the next guest does.', v: <BoardVisual /> },
 ];
 
 export function Steps() {
   return (
     <section className="wrap section" id="helps" aria-labelledby="helps-h">
-      <div className="sec-head"><h2 id="helps-h">How Veloce takes operations off your plate</h2></div>
+      <div className="sec-head split">
+        <h2 id="helps-h">How Veloce takes operations off your plate</h2>
+        <p className="lede">Three things happen for every issue, whichever way it reaches you.</p>
+      </div>
       <div className="rows">
         {ROWS.map((r) => (
           <div className="row" key={r.h}>
@@ -181,14 +185,14 @@ export function Steps() {
               <h3>{r.h}</h3>
               <p>{r.p}</p>
             </div>
-            <div className="row-vis">{r.v}</div>
+            <div className="stage row-vis">{r.v}</div>
           </div>
         ))}
       </div>
       <p className="via">
         <span className="chan"><Icon name="phone" />Voice calls</span>
         <span className="chan"><Icon name="chat" />WhatsApp</span>
-        <span className="txt">reach guests in their own language</span>
+        <span className="txt">in your guest’s own language</span>
       </p>
       <p className="fine example center">Screens show example data.</p>
     </section>
@@ -218,8 +222,9 @@ export function Housekeeping() {
       <div className="hk">
         <div className="hk-copy">
           <h2 id="hk-h">Housekeeping in the same place</h2>
-          <p>Turnover checklists move off paper. Housekeepers tick rooms off from their phone, and supervisors see which rooms are ready before check-in.</p>
+          <p>Turnover checklists come off paper. Housekeepers tick rooms off on their phone, and you can see which rooms are ready before check-in.</p>
         </div>
+        <div className="stage hk-stage">
         <Frame title="Today’s turnovers" meta="2 of 4 ready" className="hk-frame">
           <div className="hk-body" aria-hidden="true">
             <ul className="hk-rooms">
@@ -240,6 +245,7 @@ export function Housekeeping() {
             </div>
           </div>
         </Frame>
+        </div>
       </div>
     </section>
   );
