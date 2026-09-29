@@ -1,14 +1,25 @@
 import { Icon } from './Icons';
 
+const PROPERTY_TYPES = [
+  'Short-term rentals', 'Serviced apartments', 'Boutique hotels', 'Villa collections', 'Holiday homes',
+  'Resorts', 'Heritage stays', 'Aparthotels', 'Guesthouses', 'Homestays', 'Bed and breakfasts',
+  'Hostels', 'Corporate housing', 'Co-living spaces', 'Hotel groups',
+];
+
+// A slow ticker. The second copy of the list is only there to make the loop seamless.
 export function Operators() {
   return (
-    <section className="wrap ops" aria-label="Who Veloce is for">
-      <p className="ops-lead">Made for the people running</p>
-      <ul>
-        {['Serviced apartments', 'Short-let portfolios', 'Boutique hotel groups', 'Villa collections', 'Heritage stays'].map((o) => (
-          <li key={o}>{o}</li>
-        ))}
-      </ul>
+    <section className="ops" aria-labelledby="ops-h">
+      <p className="ops-lead" id="ops-h">Made for the people running</p>
+      <div className="ticker">
+        <div className="ticker-track">
+          {[0, 1].map((copy) => (
+            <ul key={copy} aria-hidden={copy === 1 ? 'true' : undefined}>
+              {PROPERTY_TYPES.map((o) => <li key={o}>{o}</li>)}
+            </ul>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }

@@ -185,10 +185,18 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .row-mark { width: 16px; height: 16px; }
 
 /* ============ operators ============ */
-.ops { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 18px; text-align: center; }
+.ops { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .ops-lead { font-size: 15px; color: var(--ink-4); }
-.ops ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 36px; }
-.ops li { font-family: var(--f-display); font-size: clamp(21px, 1.9vw, 26px); letter-spacing: -.01em; color: var(--ink-2); }
+.ticker {
+  width: 100%; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+}
+.ticker-track { display: flex; width: max-content; animation: ticker 70s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker ul { list-style: none; margin: 0; padding: 0 44px 0 0; display: flex; gap: 44px; flex: none; }
+.ticker li { font-family: var(--f-display); font-size: clamp(21px, 1.9vw, 26px); letter-spacing: -.01em; color: var(--ink-2); white-space: nowrap; }
+@keyframes ticker { to { transform: translateX(-50%); } }
 
 /* ============ problem ============ */
 .compare { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
@@ -444,8 +452,9 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .src, .out { padding: 9px 10px; }
   .src p, .out b { font-size: 13px; }
   .ops { margin-top: 32px; gap: 12px; }
-  .ops ul { gap: 4px 20px; }
-  .ops li { font-size: 21px; }
+  .ticker ul { gap: 32px; padding-right: 32px; }
+  .ticker li { font-size: 21px; }
+  .ticker-track { animation-duration: 55s; }
   .sec-head { margin-bottom: 24px; }
   .compare { grid-template-columns: 1fr; gap: 14px; }
   .lane { padding: 22px 16px 18px; border-radius: 18px; }
@@ -497,5 +506,9 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .ticker { -webkit-mask-image: none; mask-image: none; }
+  .ticker-track { width: auto; justify-content: center; padding: 0 var(--gutter); }
+  .ticker ul { flex-wrap: wrap; justify-content: center; gap: 6px 32px; padding: 0; }
+  .ticker ul[aria-hidden] { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }

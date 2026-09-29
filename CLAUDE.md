@@ -33,7 +33,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Colours, spacing, breakpoints | `app/globals.css` |
 | Hero headline and buttons | `components/Hero.jsx` |
 | "Coming in / Handled" animation | `components/Convergence.jsx` (client component) |
-| Operators line, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
+| Property-type ticker, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
 | Calculator UI | `components/SavingsModel.jsx`; its state lives in `components/Gains.jsx` |
 | Calculator maths, currencies, default assumptions | `lib/model.js` |
 | FAQ, contact card, footer | `components/Closing.jsx` |
@@ -69,7 +69,7 @@ Components are server components unless they need state or effects. Only then ad
 - Brand green `#0a5c4a` for buttons, marks and key numbers; accent green `#377863` for small details. Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
 - Fonts, loaded with `next/font` in `app/layout.jsx`: Newsreader (serif) for h1, h2 and large numbers; Hanken Grotesk for everything else. Avoid generic AI-site fonts (Inter, DM Sans, Manrope, Space Grotesk, Geist). The logo is the brand PNG; do not redraw it as live text.
 - Avoid generic template tells: all-caps labels, monospace labels, "01 / 02 / 03" numbering (unless the content really is a sequence), an arrow at the end of links, and middle-dot separated labels.
-- One animation moment (the hero). No fade-in-on-scroll effects on every section. Respect reduced motion.
+- Motion is limited to the hero animation and the slow property-type ticker under it (it pauses on hover and becomes a static list with reduced motion). No fade-in-on-scroll effects on every section. Respect reduced motion.
 - **Must stay mobile responsive.** Breakpoints: 1100px, 860px (menu button), 760px (phone layout), 420px (small phones). There must be no sideways scrolling at 360px.
 
 ## Links
