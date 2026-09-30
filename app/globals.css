@@ -184,6 +184,26 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .row-arrow.hot { background: var(--brand); color: #fff; }
 .row-mark { width: 16px; height: 16px; }
 
+/* ============ SOC 2 badge ============ */
+.soc2 { display: inline-flex; align-items: center; gap: 11px; margin: 0; padding: 4px 10px 4px 4px; border-radius: 999px; text-decoration: none; transition: background .15s; }
+.soc2-dark:hover { background: rgba(255, 255, 255, .08); }
+.soc2-light:hover { background: var(--mint); }
+.soc2:hover .soc2-t small { text-decoration: underline; text-underline-offset: 2px; }
+.soc2-dark:focus-visible { outline-color: #fff; }
+.soc2-seal { width: 42px; height: 42px; flex: none; border-radius: 50%; display: grid; place-items: center; }
+.soc2-seal svg { width: 22px; height: 22px; }
+.soc2-t { display: flex; flex-direction: column; line-height: 1.15; }
+.soc2-t b { font-size: 14.5px; font-weight: 700; letter-spacing: -.005em; }
+.soc2-t small { font-size: 13.5px; }
+.soc2-dark .soc2-seal { color: #bfe6d3; background: rgba(255, 255, 255, .1); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .32); }
+.soc2-dark .soc2-t b { color: #fff; }
+.soc2-dark .soc2-t small { color: rgba(234, 244, 239, .72); }
+.soc2-light .soc2-seal { color: var(--brand); background: var(--mint); box-shadow: inset 0 0 0 1px var(--mint-2); }
+.soc2-light .soc2-t b { color: var(--ink); }
+.soc2-light .soc2-t small { color: var(--ink-4); }
+.hero-soc2 { margin: 0 0 22px -4px; }
+.foot .foot-soc2 { margin: 16px 0 0 -4px; }
+
 /* ============ operators ============ */
 .ops { margin-top: 36px; display: flex; flex-direction: column; align-items: center; gap: 16px; text-align: center; }
 .ops-lead { font-size: 15px; color: var(--ink-4); }

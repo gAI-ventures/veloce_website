@@ -1,5 +1,6 @@
 import { Icon } from './Icons';
 import Logo from './Logo';
+import Soc2Badge from './Soc2Badge';
 import { DEMO_URL, LOGIN_URL, CONTACT_URL, QUESTION_URL, CONTACT_EMAIL, COMPANY_URL, ext } from '@/lib/siteConfig';
 
 const FAQS = [
@@ -48,6 +49,7 @@ export function Contact() {
             <li><a href={CONTACT_URL} {...ext}>{CONTACT_EMAIL}</a></li>
             <li>Replies within a working day</li>
             <li>NDA on request</li>
+            <li>SOC 2 Type II compliant</li>
           </ul>
         </div>
       </div>
@@ -63,6 +65,7 @@ export function Footer() {
           <Logo height={38} />
           <p>A hospitality operations platform for maintenance, housekeeping and guest engagement.</p>
           <p className="fine">Built by <a href={COMPANY_URL} {...ext}>gAI Ventures</a></p>
+          <Soc2Badge className="foot-soc2" />
         </div>
         <div>
           <h4>Veloce</h4>

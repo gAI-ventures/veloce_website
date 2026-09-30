@@ -1,5 +1,6 @@
 import Convergence from './Convergence';
 import { Icon } from './Icons';
+import Soc2Badge from './Soc2Badge';
 import { DEMO_URL, ext } from '@/lib/siteConfig';
 
 export default function Hero() {
@@ -8,6 +9,7 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero-panel">
           <div className="hero-copy">
+            <Soc2Badge tone="dark" className="hero-soc2" />
             <h1>Higher ratings, more bookings, less time on operations</h1>
             <p className="lede">
               Veloce is a hospitality operations platform. It hears about the broken AC while your guest is still in
