@@ -1,4 +1,5 @@
 import { Icon } from './Icons';
+import { SOURCES, ext } from '@/lib/siteConfig';
 
 const PROPERTY_TYPES = [
   'Short-term rentals', 'Serviced apartments', 'Boutique hotels', 'Villa collections', 'Holiday homes',
@@ -74,8 +75,11 @@ export function Problem() {
   return (
     <section className="wrap section" id="problem" aria-labelledby="problem-h">
       <div className="sec-head split">
-        <h2 id="problem-h">Most guest problems reach you after checkout</h2>
-        <p className="lede">They get lost between phones and group chats, so the first you hear of it is often the review.</p>
+        <h2 id="problem-h">A guest problem you hear about late costs you bookings and rate</h2>
+        <p className="lede">
+          It turns up in a review and lowers your rating. Cornell found each 1% of reputation is worth up to 1.42% in
+          revenue per room (<a href={SOURCES.cornell.url} {...ext}>{SOURCES.cornell.short}</a>).
+        </p>
       </div>
 
       <div className="compare" aria-label="The same complaint, today and with Veloce">

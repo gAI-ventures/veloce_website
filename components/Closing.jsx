@@ -1,14 +1,10 @@
 import { Icon } from './Icons';
+import Assure from './Assure';
 import Logo from './Logo';
 import Soc2Badge from './Soc2Badge';
 import { DEMO_URL, LOGIN_URL, CONTACT_URL, QUESTION_URL, CONTACT_EMAIL, COMPANY_URL, ext } from '@/lib/siteConfig';
-
-const FAQS = [
-  { q: 'Do my staff need to learn new software?', a: 'No. Caretakers and housekeepers keep using WhatsApp. Managers get a web app with the full picture.' },
-  { q: 'Does Veloce replace my PMS?', a: 'No. It sits alongside your PMS and channel manager and looks after what happens during the stay.' },
-  { q: 'How do guests hear from Veloce?', a: 'A short call or WhatsApp message during their stay. Whatever they raise goes to your team, and things like refunds are still your call.' },
-  { q: 'What does it cost?', a: 'It depends on how many properties you have and which channels you use. We’ll share pricing on the call, with an estimate for your portfolio.' },
-];
+import { FAQS } from '@/lib/faq';
+import { whatsappUrl } from '@/lib/proof';
 
 export function Faq() {
   return (
@@ -41,7 +37,9 @@ export function Contact() {
           <div className="cta-row">
             <a className="btn btn-primary" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
             <a className="btn btn-on-dark" href={QUESTION_URL} {...ext}>Email a question</a>
+            {whatsappUrl && <a className="btn btn-on-dark" href={whatsappUrl} {...ext}>Message us on WhatsApp</a>}
           </div>
+          <Assure />
         </div>
         <div className="contact">
           <span className="av">SK</span><b>Sooraj Kamath</b><small>gAI Ventures</small>
@@ -72,6 +70,7 @@ export function Footer() {
           <ul>
             <li><a href="#problem">Why it matters</a></li>
             <li><a href="#helps">How it helps</a></li>
+            <li><a href="#compare">Why Veloce</a></li>
             <li><a href="#gains">See the impact</a></li>
             <li><a href="#faq">FAQ</a></li>
             <li><a href="/play">Play the game</a></li>
@@ -82,6 +81,7 @@ export function Footer() {
           <ul>
             <li><a href={DEMO_URL} {...ext}>Book a call</a></li>
             <li><a href={CONTACT_URL} {...ext}>Email Sooraj</a></li>
+            {whatsappUrl && <li><a href={whatsappUrl} {...ext}>WhatsApp</a></li>}
             <li><a href={LOGIN_URL}>Log in</a></li>
           </ul>
         </div>

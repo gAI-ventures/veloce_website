@@ -4,10 +4,12 @@ import { useEffect, useState } from 'react';
 import { Icon } from './Icons';
 import Logo from './Logo';
 import { DEMO_URL, LOGIN_URL, ext } from '@/lib/siteConfig';
+import { whatsappUrl } from '@/lib/proof';
 
 const SECTIONS = [
   { href: '#problem', label: 'Why it matters' },
   { href: '#helps', label: 'How it helps' },
+  { href: '#compare', label: 'Why Veloce' },
   { href: '#gains', label: 'See the impact' },
   { href: '#faq', label: 'FAQ' },
 ];
@@ -59,6 +61,7 @@ export default function Nav() {
         </nav>
         <div className="mobile-cta">
           <a className="btn btn-primary" href={DEMO_URL} {...ext} onClick={() => setOpen(false)}>Book a 30-minute call</a>
+          {whatsappUrl && <a className="btn btn-ghost" href={whatsappUrl} {...ext} onClick={() => setOpen(false)}>Message us on WhatsApp</a>}
           <a className="btn btn-ghost" href={LOGIN_URL}>Log in</a>
         </div>
       </div>

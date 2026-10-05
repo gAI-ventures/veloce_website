@@ -24,6 +24,7 @@ const paths = {
       <path {...S} strokeWidth="1.8" d="M12 10v4.5M12 17.2v.3" />
     </>
   ),
+  minus: <path {...S} strokeWidth="1.8" d="M6 12h12" />,
   plus: <path {...S} strokeWidth="1.8" d="M12 5v14M5 12h14" />,
   menu: <path {...S} strokeWidth="1.8" d="M4 7h16M4 12h16M4 17h16" />,
   close: <path {...S} strokeWidth="1.8" d="M6 6l12 12M18 6L6 18" />,

@@ -311,6 +311,41 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .chan svg { width: 15px; height: 15px; color: var(--accent-text); }
 .via { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 36px; font-size: 16px; color: var(--ink-3); text-align: center; }
 
+/* ============ proof strip (only renders with values in lib/proof.js) ============ */
+.proof { margin-top: 20px; display: grid; gap: 16px; }
+.proof.has-case { grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: start; }
+.proof-stats { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+.proof-stats li, .proof-case { background: #fff; border: 1px solid var(--line); border-radius: var(--r-panel); padding: 22px 24px; }
+.proof-stats b { display: block; font-family: var(--f-display); font-size: clamp(38px, 4vw, 52px); font-weight: 400; letter-spacing: -.02em; line-height: 1; color: var(--brand); }
+.proof-stats span { display: block; margin-top: 10px; font-size: 15.5px; font-weight: 600; color: var(--ink-2); }
+.proof-stats small, .proof-case figcaption { display: block; margin-top: 4px; font-size: 13.5px; color: var(--ink-4); }
+.proof-case { margin: 0; }
+.proof-case figcaption { margin: 0 0 8px; font-weight: 600; color: var(--ink-3); }
+.proof-case table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.proof-case th, .proof-case td { padding: 8px 0; border-bottom: 1px solid var(--line); text-align: right; }
+.proof-case thead th { font-size: 12.5px; font-weight: 600; color: var(--ink-4); padding-top: 0; }
+.proof-case tbody th { text-align: left; font-weight: 400; color: var(--ink-2); padding-right: 12px; }
+.proof-case td { color: var(--ink-4); padding-left: 12px; white-space: nowrap; }
+.proof-case .w { color: var(--accent-text); font-weight: 600; }
+.proof-case tr:last-child th, .proof-case tr:last-child td { border-bottom: 0; }
+.proof-case blockquote { margin: 12px 0 0; font-family: var(--f-display); font-size: 18px; line-height: 1.4; color: var(--ink-2); }
+
+/* ============ why veloce ============ */
+.vs { width: 100%; border-collapse: collapse; font-size: 15px; table-layout: fixed; }
+.vs th, .vs td { padding: 14px 18px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: middle; }
+.vs thead th { font-size: 13px; font-weight: 600; color: var(--ink-4); line-height: 1.35; vertical-align: bottom; }
+.vs thead th:first-child { width: 30%; }
+.vs tbody th { font-weight: 600; color: var(--ink); }
+.vs td { color: var(--ink-3); white-space: nowrap; }
+.vs td svg { width: 16px; height: 16px; margin-right: 8px; vertical-align: -3px; }
+.vs .m-yes svg { color: var(--accent-text); }
+.vs .m-part svg, .vs .m-no svg { color: var(--ink-4); }
+.vs .w { background: var(--mint); }
+.vs thead th.w { color: var(--brand); font-size: 15px; }
+.vs td.w { color: var(--brand); font-weight: 600; }
+.vs td.w svg { color: var(--brand); }
+.vs tr:last-child th, .vs tr:last-child td { border-bottom: 0; }
+
 /* ============ housekeeping ============ */
 .hk { display: grid; grid-template-columns: minmax(0, .75fr) minmax(0, 1.25fr); gap: 48px; align-items: center; }
 .hk-copy p { font-size: 17px; color: var(--ink-3); margin-top: 16px; max-width: 38ch; }
@@ -444,6 +479,7 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .faq-head { position: static; }
   .model { grid-template-columns: 1fr; }
   .cta { grid-template-columns: 1fr; padding: 56px; }
+  .proof.has-case { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 860px) {
@@ -493,6 +529,22 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .fault-card { grid-column: 1; width: auto; margin: -20px 0 -8px 16%; }
   .lines li { grid-template-columns: 1fr; gap: 0; }
   .board td, .board th { padding-left: 12px; padding-right: 12px; }
+  .proof { margin-top: 14px; gap: 10px; }
+  .proof-stats { gap: 10px; }
+  .proof-stats li, .proof-case { padding: 18px 16px; }
+  .vs, .vs tbody, .vs tr, .vs th, .vs td { display: block; }
+  .vs thead { display: none; }
+  .vs tr { padding: 14px 16px; border-bottom: 1px solid var(--line); }
+  .vs tbody th, .vs td { padding: 0; border: 0; }
+  .vs tbody th { font-size: 16px; margin-bottom: 10px; }
+  .vs td { display: flex; justify-content: space-between; gap: 12px; padding: 4px 0; font-size: 14px; white-space: normal; }
+  .vs td::before { content: attr(data-col); color: var(--ink-4); font-weight: 400; }
+  .vs td span { flex: none; }
+  .vs td.w { order: -1; margin: 0 -8px 6px; padding: 8px; border-radius: 8px; font-size: 15px; }
+  .vs td.w::before { color: var(--brand); font-weight: 600; }
+  .vs tr { display: flex; flex-direction: column; }
+  .vs tbody th { order: -2; }
+  .vs td svg { margin-right: 6px; }
   .hk-copy p { font-size: 16.5px; }
   .hk-body { grid-template-columns: 1fr; }
   .hk-rooms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; border-right: 0; border-bottom: 1px solid var(--line); }

@@ -1,0 +1,24 @@
+# Veloce
+
+> Veloce is a hospitality operations platform built by gAI Ventures. It brings guest complaints, maintenance and housekeeping into one place, whether they arrive on a call, on WhatsApp, through a caretaker or from an owner.
+
+## Who it is for
+
+Owners and operations managers running several properties: short-term rentals, serviced apartments, boutique hotels, villas, aparthotels and hotel groups. Operators are in India today, with Europe, the US and Dubai next.
+
+## What it does
+
+- Hears about guest problems during the stay, through a short call or WhatsApp message in the guest's own language.
+- Sends each issue to the right person on WhatsApp, reminds them until it is fixed, and tells the guest.
+- Keeps one record per property and flags faults that keep coming back.
+- Gives housekeepers turnover checklists on their phone, so managers can see which rooms are ready.
+- Works alongside the operator's PMS and channel manager. Staff keep using WhatsApp, with no new app to learn.
+
+Pricing depends on portfolio size and channels and is shared on a call.
+
+## Contact
+
+- Book a 30-minute call: https://calendly.com/sooraj-gai/veloce-demo
+- Email: sooraj@gai.ventures
+- Website: https://www.veloce7.com
+- App login: https://main.d3r6z57jqeqvlu.amplifyapp.com/login/

@@ -1,7 +1,8 @@
 import Convergence from './Convergence';
-import { Icon } from './Icons';
+import Assure from './Assure';
 import Soc2Badge from './Soc2Badge';
 import { DEMO_URL, ext } from '@/lib/siteConfig';
+import { whatsappUrl } from '@/lib/proof';
 
 export default function Hero() {
   return (
@@ -18,11 +19,9 @@ export default function Hero() {
             <div className="cta-row">
               <a className="btn btn-light" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
               <a className="btn btn-on-dark" href="#gains">See what you'd gain</a>
+              {whatsappUrl && <a className="btn btn-on-dark" href={whatsappUrl} {...ext}>Message us on WhatsApp</a>}
             </div>
-            <ul className="assure">
-              <li><Icon name="check" />Works alongside your PMS</li>
-              <li><Icon name="check" />Your staff stay on WhatsApp</li>
-            </ul>
+            <Assure />
           </div>
           <div className="hero-ui">
             <Convergence />
