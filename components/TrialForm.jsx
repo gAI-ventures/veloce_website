@@ -2,63 +2,50 @@
 
 import { useState } from 'react';
 import { Icon } from './Icons';
-import { UNIT_BANDS, CURRENT_TOOLS, TRIAL } from '@/lib/trial';
-import { CONTACT_EMAIL, ext } from '@/lib/siteConfig';
+import { UNIT_BANDS, CURRENT_TOOLS, TRIAL, TRIAL_FORM_URL } from '@/lib/trial';
+import { ext } from '@/lib/siteConfig';
 
-const EMPTY = { name: '', whatsapp: '', email: '', units: '', tools: '', company: '' };
-
-// Gmail compose with the details filled in. Used when the signup endpoint is not set or fails,
-// so a signup is never lost.
-function emailFallback(f) {
-  const body = [
-    'I would like to start the free month of Veloce.',
-    '',
-    `Name: ${f.name}`,
-    `WhatsApp: ${f.whatsapp}`,
-    `Email: ${f.email}`,
-    `Units: ${f.units}`,
-    `Using today: ${f.tools}`,
-  ].join('\n');
-  return `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(CONTACT_EMAIL)}&su=${encodeURIComponent('Veloce free trial')}&body=${encodeURIComponent(body)}`;
-}
+const EMPTY = { name: '', whatsapp: '', email: '', units: '', tools: '', botcheck: false };
 
 export default function TrialForm({ demoWaUrl }) {
   const [f, setF] = useState(EMPTY);
-  const [state, setState] = useState('idle'); // idle | sending | done | fallback
+  const [state, setState] = useState('idle'); // idle | sending | done | error
   const set = (k) => (e) => setF((s) => ({ ...s, [k]: e.target.value }));
 
   const submit = async (e) => {
     e.preventDefault();
+    if (f.botcheck) return;
     setState('sending');
     try {
-      const res = await fetch('/api/trial', {
+      const res = await fetch(TRIAL_FORM_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...f, page: window.location.href }),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          _subject: `Veloce free trial: ${f.name} (${f.units} units)`,
+          _template: 'table',
+          _captcha: 'false',
+          _replyto: f.email,
+          Name: f.name,
+          WhatsApp: f.whatsapp,
+          Email: f.email,
+          Units: f.units,
+          'Using today': f.tools,
+          Page: window.location.href,
+        }),
       });
-      if (res.ok) { setState('done'); return; }
+      const data = await res.json().catch(() => ({}));
+      setState(res.ok && String(data.success) === 'true' ? 'done' : 'error');
     } catch (err) {
-      // Falls through to email.
+      setState('error');
     }
-    setState('fallback');
   };
 
-  if (state === 'done' || state === 'fallback') {
+  if (state === 'done') {
     return (
       <div className="trial-form trial-done" role="status">
         <span className="trial-ok" aria-hidden="true"><Icon name="check" /></span>
-        {state === 'done' ? (
-          <>
-            <h3>You’re in, {f.name.split(' ')[0] || 'thanks'}</h3>
-            <p>We’ll message you on WhatsApp {TRIAL.setup} to set up your first homes.</p>
-          </>
-        ) : (
-          <>
-            <h3>One more step</h3>
-            <p>Send us your details by email and we’ll set you up {TRIAL.setup}.</p>
-            <a className="btn btn-primary" href={emailFallback(f)} {...ext}>Send my details by email</a>
-          </>
-        )}
+        <h3>You’re in, {f.name.split(' ')[0] || 'thanks'}</h3>
+        <p>We’ll message you on WhatsApp {TRIAL.setup} to set up your first homes.</p>
         {demoWaUrl && (
           <div className="trial-next">
             <p>While you wait, message our demo home as a guest would.</p>
@@ -101,11 +88,12 @@ export default function TrialForm({ demoWaUrl }) {
           </select>
         </div>
       </div>
-      {/* Left empty by people; bots fill it in. */}
-      <input className="tf-hp" tabIndex={-1} autoComplete="off" aria-hidden="true" value={f.company} onChange={set('company')} />
+      {/* Left unticked by people; bots tick it. */}
+      <input type="checkbox" className="tf-hp" tabIndex={-1} aria-hidden="true" checked={f.botcheck} onChange={(e) => setF((s) => ({ ...s, botcheck: e.target.checked }))} />
       <button className="btn btn-primary" type="submit" disabled={state === 'sending'}>
         {state === 'sending' ? 'Starting your free month' : 'Start my free month'}
       </button>
+      {state === 'error' && <p className="tf-err" role="alert">That didn’t go through. Please try again in a moment.</p>}
       <p className="fine">Free for {TRIAL.length}. No card needed. We only use your number to set you up.</p>
     </form>
   );

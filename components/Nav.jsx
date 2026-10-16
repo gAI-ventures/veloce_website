@@ -7,10 +7,10 @@ import { DEMO_URL, LOGIN_URL, ext } from '@/lib/siteConfig';
 import { whatsappUrl } from '@/lib/proof';
 
 const SECTIONS = [
-  { href: '#loop', label: 'How it works' },
-  { href: '#pms', label: 'Bookings' },
-  { href: '#finance', label: 'Finance' },
-  { href: '#compare', label: 'Why Veloce' },
+  { href: '#loop', label: 'The loop' },
+  { href: '#maintenance', label: 'Features' },
+  { href: '#platform', label: 'Platform' },
+  { href: '#owners', label: 'For owners' },
   { href: '#faq', label: 'FAQ' },
 ];
 

@@ -22,8 +22,9 @@ const ROWS = [
 export default function Compare() {
   return (
     <section className="wrap section" id="compare" aria-labelledby="compare-h">
-      <div className="sec-head split">
-        <h2 id="compare-h">How Veloce compares with what operators use today</h2>
+      <div className="feature-head">
+        <p className="eyebrow"><span className="eyebrow-rule" aria-hidden="true" />Comparison</p>
+        <h2 id="compare-h">What other tools miss, <em>Veloce covers.</em></h2>
         <p className="lede">Most portfolios run on a mix of these. Veloce brings the pieces together.</p>
       </div>
       <div className="stage">

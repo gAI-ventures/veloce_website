@@ -33,11 +33,11 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Colours, spacing, breakpoints | `app/globals.css` |
 | Hero headline and buttons | `components/Hero.jsx` |
 | Hero WhatsApp chat animation | `components/ChatHero.jsx` (client component) |
-| "Coming in / Handled" animation (now in the How it works section) | `components/Convergence.jsx` (client component) |
-| How it works loop, outcomes, no-PMS section, finance section | `components/Story.jsx` |
+| "Coming in / Handled" animation (in 01 Maintenance) | `components/Convergence.jsx` (client component) |
+| Announcement bar, the loop, 01 Maintenance, 02 Housekeeping, 03 Finance, the platform grid, for owners | `components/Story.jsx` |
 | Free trial section and form | `components/Trial.jsx`, `components/TrialForm.jsx` (client), settings in `lib/trial.js` |
-| Trial signup endpoint | `app/api/trial/route.js`, forwards to `TRIAL_WEBHOOK_URL`; Sheet script in `scripts/trial-signup.gs` |
-| Property-type ticker, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
+| Trial signup delivery | FormSubmit, from the browser, to sooraj@gai.ventures. Id and notes in `lib/trial.js` |
+| Property-type ticker, problem timelines | `components/Sections.jsx` |
 | Calculator UI | `components/SavingsModel.jsx`; its state lives in `components/Gains.jsx` |
 | Calculator maths, currencies, default assumptions | `lib/model.js` |
 | FAQ, contact card, footer | `components/Closing.jsx` |
@@ -53,7 +53,7 @@ Components are server components unless they need state or effects. Only then ad
 - Category line: **"Hospitality operations platform"**. Say "maintenance", not "ticketing" (it reads as bookings). Always include the word hospitality.
 - Lead with outcomes: higher guest ratings, more bookings and repeat stays, less time spent on operations, and what the owner does with the time saved.
 - The story (Oct 2026): better ratings, repeat stays and referrals, run from WhatsApp. Veloce is WhatsApp native: guests, staff and owners use the chat they already have. Voice calls are a supporting channel. Do not lead with "AI voice calls".
-- Veloce covers PMS basics (calendar, two-way Airbnb and Booking.com sync, direct bookings, guest messaging), so the site says operators no longer need a separate PMS, with "Save up to $6,000 a year" in PMS fees linked to its source.
+- Veloce covers PMS basics (calendar, two-way Airbnb and Booking.com sync, direct bookings, guest messaging). Say it quietly: the announcement bar, the platform grid and its footer line ("Save up to $6,000 a year" in PMS fees, linked to its source), the comparison table and the FAQ. No separate PMS section.
 - Finance: expenses (including reading a receipt photo) and revenue are live. Invoices are shown as "Coming soon" until they ship.
 - The main call to action is the free month (`#trial`); the 30-minute call stays as the second option.
 - Veloce stitches operations together: complaints from calls, WhatsApp, caretakers and owners, plus issue history and repeat-fault intelligence.
@@ -75,14 +75,15 @@ Components are server components unless they need state or effects. Only then ad
 - Reference points: smallest.ai (white space, plain layout, heading left and short text right) and cardboard.ai (serif headlines, product screens with short captions).
 - Brand green `#0a5c4a` for buttons, marks and key numbers; accent green `#377863` for small details. Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
 - Fonts, loaded with `next/font` in `app/layout.jsx`: Newsreader (serif) for h1, h2 and large numbers; Hanken Grotesk for everything else. Avoid generic AI-site fonts (Inter, DM Sans, Manrope, Space Grotesk, Geist). The logo is the brand PNG; do not redraw it as live text.
-- Avoid generic template tells: all-caps labels, monospace labels, "01 / 02 / 03" numbering (unless the content really is a sequence), an arrow at the end of links, and middle-dot separated labels.
-- Motion is limited to the hero chat, the "Coming in / Handled" animation in How it works, and the slow property-type ticker (it pauses on hover and becomes a static list with reduced motion). No fade-in-on-scroll effects on every section. Respect reduced motion.
+- Structure follows livaround.com (Oct 2026): announcement bar, WhatsApp chat hero, "the loop" orbit, numbered feature sections (eyebrow, two-tone heading with the second clause in `em`, feature list beside a product screen), a modules grid, for owners, comparison, free month, centred final call to action. Eyebrows are sentence case in the site font, never all caps or monospace.
+- Avoid generic template tells: all-caps labels, monospace labels, an arrow at the end of links, and middle-dot separated labels.
+- Motion is limited to the hero chat, the "Coming in / Handled" animation in 01 Maintenance, and the slow property-type ticker (it pauses on hover and becomes a static list with reduced motion). No fade-in-on-scroll effects on every section. Respect reduced motion.
 - **Must stay mobile responsive.** Breakpoints: 1100px, 860px (menu button), 760px (phone layout), 420px (small phones). There must be no sideways scrolling at 360px.
 
 ## Links
 
 - Links come from `lib/siteConfig.js`, which reads `NEXT_PUBLIC_DEMO_URL`, `NEXT_PUBLIC_LOGIN_URL`, `NEXT_PUBLIC_CONTACT_URL` and `NEXT_PUBLIC_QUESTION_URL` (set in Vercel), with fallbacks in the code.
-- Free trial variables (Vercel): `NEXT_PUBLIC_DEMO_WA_NUMBER` shows the "Try it on WhatsApp" step when set; `TRIAL_WEBHOOK_URL` and `TRIAL_WEBHOOK_SECRET` receive signups. Without the webhook the form falls back to a prefilled email, so no signup is lost.
+- Free trial: signups are emailed to sooraj@gai.ventures through FormSubmit (activated for https://www.veloce7.com/; a new domain needs one "Activate Form" click from that inbox). `NEXT_PUBLIC_DEMO_WA_NUMBER` shows the "Try it on WhatsApp" step when set.
 - Every link must go somewhere real: a section anchor, Calendly, email, the app login or a source. No `href="#"` placeholders.
 - Links that leave the site open in a new tab (`ext` from `siteConfig.js`).
 

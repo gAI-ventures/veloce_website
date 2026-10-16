@@ -12,7 +12,7 @@ export default function Hero() {
           <div className="hero-copy">
             <div className="hero-badges">
               <Soc2Badge tone="dark" className="hero-soc2" />
-              <span className="wa-pill"><Icon name="chat" />Runs on WhatsApp</span>
+              <span className="wa-pill"><Icon name="chat" />Now native to WhatsApp</span>
             </div>
             <h1>Better ratings, repeat stays and referrals, run from WhatsApp</h1>
             <p className="lede">
@@ -24,6 +24,7 @@ export default function Hero() {
               <a className="btn btn-on-dark" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
             </div>
             <Assure />
+            <p className="hero-trust"><Icon name="chat" />Works in the WhatsApp your guests and team already use</p>
           </div>
           <div className="hero-ui">
             <ChatHero />

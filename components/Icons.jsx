@@ -39,6 +39,12 @@ const paths = {
     </>
   ),
   arrow: <path {...S} strokeWidth="1.8" d="M5 12h13M13 7l5 5-5 5" />,
+  doc: (
+    <>
+      <path {...S} d="M7 3h7l4 4v14H7z" />
+      <path {...S} d="M14 3v4h4M10 12h5M10 16h5" />
+    </>
+  ),
   receipt: (
     <>
       <path {...S} d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
