@@ -4,7 +4,7 @@ import { CONTACT_EMAIL, COMPANY_URL } from '@/lib/siteConfig';
 
 const SITE = 'https://www.veloce7.com';
 const DESCRIPTION =
-  'Veloce hears about guest problems while the guest is still there, gets them to the right person, and keeps every property in one place. Higher ratings, more bookings, less time on operations.';
+  'Veloce is a hospitality operations platform that runs on WhatsApp. Guests, staff and owners use the chat they already have, and Veloce handles issues, bookings, housekeeping and finance. Better ratings, repeat stays and referrals.';
 
 // Structured data for search engines and AI assistants. No prices.
 const jsonLd = [
@@ -40,7 +40,7 @@ export const metadata = {
   metadataBase: new URL(SITE),
   openGraph: {
     title: 'Veloce | Hospitality operations platform',
-    description: 'Higher ratings, more bookings, less time on operations.',
+    description: 'Better ratings, repeat stays and referrals, run from WhatsApp.',
     url: SITE,
     siteName: 'Veloce',
     type: 'website',

@@ -1,8 +1,8 @@
-import Convergence from './Convergence';
+import ChatHero from './ChatHero';
+import { Icon } from './Icons';
 import Assure from './Assure';
 import Soc2Badge from './Soc2Badge';
 import { DEMO_URL, ext } from '@/lib/siteConfig';
-import { whatsappUrl } from '@/lib/proof';
 
 export default function Hero() {
   return (
@@ -10,21 +10,23 @@ export default function Hero() {
       <div className="wrap">
         <div className="hero-panel">
           <div className="hero-copy">
-            <Soc2Badge tone="dark" className="hero-soc2" />
-            <h1>Higher ratings, more bookings, less time on operations</h1>
+            <div className="hero-badges">
+              <Soc2Badge tone="dark" className="hero-soc2" />
+              <span className="wa-pill"><Icon name="chat" />Runs on WhatsApp</span>
+            </div>
+            <h1>Better ratings, repeat stays and referrals, run from WhatsApp</h1>
             <p className="lede">
-              Veloce is a hospitality operations platform. It hears about the broken AC while your guest is still in
-              the room, gets it to the right person, and keeps all your properties in one place.
+              Veloce is a hospitality operations platform that works inside WhatsApp. Your guests, staff and owners
+              use the chat they already have, and Veloce fixes issues, runs bookings and keeps your books.
             </p>
             <div className="cta-row">
-              <a className="btn btn-light" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
-              <a className="btn btn-on-dark" href="#gains">See what you'd gain</a>
-              {whatsappUrl && <a className="btn btn-on-dark" href={whatsappUrl} {...ext}>Message us on WhatsApp</a>}
+              <a className="btn btn-light" href="#trial">Start your free month</a>
+              <a className="btn btn-on-dark" href={DEMO_URL} {...ext}>Book a 30-minute call</a>
             </div>
             <Assure />
           </div>
           <div className="hero-ui">
-            <Convergence />
+            <ChatHero />
           </div>
         </div>
       </div>

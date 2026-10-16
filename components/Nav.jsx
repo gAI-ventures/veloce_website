@@ -7,10 +7,10 @@ import { DEMO_URL, LOGIN_URL, ext } from '@/lib/siteConfig';
 import { whatsappUrl } from '@/lib/proof';
 
 const SECTIONS = [
-  { href: '#problem', label: 'Why it matters' },
-  { href: '#helps', label: 'How it helps' },
+  { href: '#loop', label: 'How it works' },
+  { href: '#pms', label: 'Bookings' },
+  { href: '#finance', label: 'Finance' },
   { href: '#compare', label: 'Why Veloce' },
-  { href: '#gains', label: 'See the impact' },
   { href: '#faq', label: 'FAQ' },
 ];
 
@@ -39,7 +39,8 @@ export default function Nav() {
         </nav>
         <div className="nav-end">
           <a className="btn btn-ghost btn-sm" href={LOGIN_URL}>Log in</a>
-          <a className="btn btn-primary btn-sm" href={DEMO_URL} {...ext}>Book a call</a>
+          <a className="btn btn-ghost btn-sm nav-call" href={DEMO_URL} {...ext}>Book a call</a>
+          <a className="btn btn-primary btn-sm" href="#trial">Start free month</a>
         </div>
         <button
           className="menu-btn"
@@ -60,7 +61,8 @@ export default function Nav() {
           ))}
         </nav>
         <div className="mobile-cta">
-          <a className="btn btn-primary" href={DEMO_URL} {...ext} onClick={() => setOpen(false)}>Book a 30-minute call</a>
+          <a className="btn btn-primary" href="#trial" onClick={() => setOpen(false)}>Start your free month</a>
+          <a className="btn btn-ghost" href={DEMO_URL} {...ext} onClick={() => setOpen(false)}>Book a 30-minute call</a>
           {whatsappUrl && <a className="btn btn-ghost" href={whatsappUrl} {...ext} onClick={() => setOpen(false)}>Message us on WhatsApp</a>}
           <a className="btn btn-ghost" href={LOGIN_URL}>Log in</a>
         </div>

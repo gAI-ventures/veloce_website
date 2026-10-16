@@ -39,6 +39,12 @@ const paths = {
     </>
   ),
   arrow: <path {...S} strokeWidth="1.8" d="M5 12h13M13 7l5 5-5 5" />,
+  receipt: (
+    <>
+      <path {...S} d="M6 3h12v18l-3-2-3 2-3-2-3 2z" />
+      <path {...S} d="M9 8h6M9 12h6M9 16h3" />
+    </>
+  ),
 };
 
 export function Icon({ name, className, size }) {
