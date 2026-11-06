@@ -2,8 +2,10 @@ import { Icon } from './Icons';
 import { setupTime } from '@/lib/proof';
 
 // Facts that make booking a call feel low-risk. Shown under the call buttons.
-export default function Assure() {
-  const items = ['No PMS needed, or keep yours', 'Staff use WhatsApp, no new app'];
+// noWhatsapp: the hero already says this in its WhatsApp line.
+export default function Assure({ noWhatsapp = false }) {
+  const items = ['No PMS needed, or keep yours'];
+  if (!noWhatsapp) items.push('Staff use WhatsApp, no new app');
   if (setupTime) items.push(`Live in ${setupTime}`);
   return (
     <ul className="assure">
