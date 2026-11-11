@@ -146,8 +146,8 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .channels-stage { position: relative; aspect-ratio: 1 / .94; }
 .ch-slot { position: absolute; display: flex; flex-direction: column; }
 .ch-web { top: 0; left: 6%; right: 6%; height: 70%; z-index: 1; }
-.ch-wa { left: 0; bottom: 0; width: 31%; height: 62%; z-index: 2; }
-.ch-im { right: 0; bottom: 4%; width: 31%; height: 62%; z-index: 2; }
+.ch-wa { left: 0; bottom: 0; width: 32%; height: 66%; z-index: 2; }
+.ch-im { right: 0; bottom: 3%; width: 32%; height: 66%; z-index: 2; }
 .ch-label { flex: none; align-self: flex-start; margin-bottom: 8px; padding: 3px 10px; border-radius: 999px; background: #fff; box-shadow: var(--lift-sm); font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
 .ch-wa .ch-label, .ch-im .ch-label { order: 2; align-self: center; margin: 10px 0 0; }
 .mk { flex: 1; min-height: 0; overflow: hidden; background: #fff; box-shadow: var(--lift); }
@@ -176,35 +176,61 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .mk-via svg { width: 12px; height: 12px; color: var(--accent-text); }
 .mk-st { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
 
-.mk-phone { position: relative; display: flex; flex-direction: column; border: 6px solid #111614; border-radius: 28px; }
-.mk-phone::before { content: ""; position: absolute; top: 6px; left: 50%; z-index: 2; transform: translateX(-50%); background: #111614; }
-.mk-av { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; }
-.mk-av svg { width: 14px; height: 14px; }
-.mk-chat { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 5px; padding: 8px; }
-.mk-b { max-width: 86%; font-size: 11px; line-height: 1.35; }
+/* Phones: iPhone frame with Dynamic Island, status bar and home indicator */
+.mk-phone { position: relative; display: flex; flex-direction: column; border-radius: 30px; box-shadow: 0 0 0 4px #1d1f1e, 0 0 0 5px #3a3d3b, var(--lift); }
+.mk-phone::before { content: ""; position: absolute; top: 7px; left: 50%; z-index: 3; width: 32%; height: 13px; border-radius: 999px; transform: translateX(-50%); background: #000; }
+.mk-status { flex: none; display: flex; align-items: center; justify-content: space-between; height: 27px; padding: 3px 16px 0 22px; font-size: 10.5px; color: #000; }
+.mk-status b { font-weight: 600; letter-spacing: -.01em; }
+.mk-status svg { width: 30px; height: 8px; fill: currentColor; }
+.mk-home { position: absolute; left: 50%; bottom: 4px; width: 34%; height: 3px; border-radius: 999px; transform: translateX(-50%); background: #000; }
+.mk-av { flex: none; width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; background: var(--brand); color: #fff; }
+.mk-av svg { width: 13px; height: 13px; }
+.mk-chat { flex: 1; min-height: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end; gap: 4px; padding: 6px 8px 8px; }
+.mk-b { max-width: 84%; font-size: 10.5px; line-height: 1.35; }
+.mk-plus { flex: none; font-size: 17px; font-weight: 300; line-height: 1; }
+.mk-field { flex: 1; min-width: 0; height: 22px; border-radius: 999px; background: #fff; border: 1px solid #e3e3e3; }
 
-/* WhatsApp (Android) colours */
+/* WhatsApp on iOS */
 .mk-wa { background: #efeae2; }
-.mk-wa::before { width: 8px; height: 8px; border-radius: 50%; }
-.mk-wa-head { flex: none; display: flex; align-items: center; gap: 7px; padding: 22px 10px 8px; background: #008069; color: #fff; font-size: 12px; }
-.mk-wa-head > span:last-child { display: flex; flex-direction: column; line-height: 1.2; }
-.mk-wa-head small { font-size: 10px; opacity: .8; }
-.mk-wa .mk-av { background: #fff; color: var(--brand); }
-.mk-wa .mk-b { position: relative; padding: 5px 7px 15px; border-radius: 7px; color: #111b21; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); }
-.mk-wa .mk-b.mk-in { align-self: flex-start; background: #fff; border-top-left-radius: 2px; }
-.mk-wa .mk-b.mk-out { align-self: flex-end; background: #d9fdd3; border-top-right-radius: 2px; }
-.mk-wa time { position: absolute; right: 6px; bottom: 2px; font-size: 9px; color: #667781; }
-.mk-photo { display: block; height: 52px; margin: -1px -3px 5px; border-radius: 5px; background: linear-gradient(135deg, #c9d2cd, #e3e8e5); }
+.mk-wa .mk-status { background: #f6f6f6; }
+.mk-wa-head { flex: none; display: flex; align-items: center; gap: 6px; padding: 3px 9px 6px 6px; background: #f6f6f6; border-bottom: 1px solid #dedede; color: #000; }
+.mk-back { flex: none; width: 7px; height: 12px; fill: none; stroke: #000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.mk-wa-name { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.15; }
+.mk-wa-name b { font-size: 11.5px; font-weight: 600; }
+.mk-wa-name small { font-size: 9px; color: #667781; }
+.mk-wa-ic { flex: none; width: 15px; height: 15px; margin-left: 6px; fill: none; stroke: #000; stroke-width: 1.6; stroke-linejoin: round; }
+.mk-wa .mk-chat {
+  background-color: #efeae2;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' fill='none' stroke='%23e0d9ce' stroke-width='1' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 14c3-4 8-4 10 0s-2 7-5 6M46 8l3 6 6 1-4 4 1 6-6-3-5 3 1-6-4-4 6-1zM30 40c2-3 6-3 7 0M62 44a6 6 0 1 0 0 .1M10 56l4 8 4-8M44 66h10c2 0 3 2 1 3l-6 4'/%3E%3C/svg%3E");
+}
+.mk-day { align-self: center; margin-bottom: 2px; padding: 2px 8px; border-radius: 6px; background: #fff; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); font-size: 9px; color: #54656f; }
+.mk-wa .mk-b { position: relative; padding: 4px 7px 5px; border-radius: 7px; color: #111b21; box-shadow: 0 1px .5px rgba(11, 20, 26, .13); }
+.mk-wa .mk-b::after { content: ""; position: absolute; top: 0; width: 7px; height: 9px; }
+.mk-wa .mk-b.mk-in { align-self: flex-start; background: #fff; border-top-left-radius: 0; }
+.mk-wa .mk-b.mk-in::after { left: -6px; background: #fff; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+.mk-wa .mk-b.mk-out { align-self: flex-end; background: #d9fdd3; border-top-right-radius: 0; }
+.mk-wa .mk-b.mk-out::after { right: -6px; background: #d9fdd3; clip-path: polygon(0 0, 100% 0, 0 100%); }
+.mk-wa .mk-b + .mk-b.mk-out, .mk-wa .mk-b.mk-out + .mk-b.mk-in { margin-top: 3px; }
+.mk-wa .mk-out + .mk-out { border-top-right-radius: 7px; }
+.mk-wa .mk-out + .mk-out::after { display: none; }
+.mk-wa time { float: right; display: inline-flex; align-items: center; gap: 2px; margin: 5px 0 -3px 8px; font-size: 8.5px; color: #667781; }
+.mk-ticks { width: 11px; height: 8px; fill: #53bdeb; }
+.mk-wa-input { flex: none; display: flex; align-items: center; gap: 8px; padding: 6px 9px 14px; background: #f6f6f6; color: #000; }
+.mk-wa-input svg { flex: none; width: 15px; height: 15px; fill: none; stroke: #000; stroke-width: 1.6; stroke-linejoin: round; }
 
-/* iMessage (iPhone) colours */
+/* iMessage */
 .mk-im { background: #fff; }
-.mk-im::before { width: 34%; height: 12px; border-radius: 999px; }
-.mk-im-head { flex: none; display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 24px 8px 7px; background: #f7f7f7; border-bottom: 1px solid #e5e5ea; font-size: 10px; color: #3c3c43; }
-.mk-im .mk-av { background: var(--brand); color: #fff; }
-.mk-when { align-self: center; margin-bottom: 2px; font-size: 9.5px; color: #8e8e93; }
-.mk-im .mk-b { padding: 6px 10px; border-radius: 15px; }
+.mk-im-head { flex: none; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 2px 8px 6px; background: #f7f7f7; border-bottom: 1px solid #e5e5ea; font-size: 9.5px; color: #000; }
+.mk-im .mk-status { background: #f7f7f7; }
+.mk-when { align-self: center; margin-bottom: 2px; font-size: 9px; color: #8e8e93; }
+.mk-when b { font-weight: 600; }
+.mk-im .mk-b { padding: 5px 9px; border-radius: 14px; }
 .mk-im .mk-b.mk-in { align-self: flex-start; background: #e9e9eb; color: #000; }
 .mk-im .mk-b.mk-out { align-self: flex-end; background: #0a84ff; color: #fff; }
+.mk-read { align-self: flex-end; margin: -1px 2px 0; font-size: 8.5px; color: #8e8e93; }
+.mk-im-input { flex: none; display: flex; align-items: center; gap: 8px; padding: 6px 9px 14px; color: #8e8e93; }
+.mk-im-input .mk-plus { width: 22px; height: 22px; display: grid; place-items: center; border-radius: 50%; background: #f0f0f2; font-size: 15px; }
+.mk-im-input .mk-field { display: flex; align-items: center; padding-left: 10px; border-color: #d1d1d6; font-size: 10px; color: #b4b4b9; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 
 .conv { max-width: 920px; margin: 0 auto; padding: 22px 24px 26px; background: #fff; border-radius: var(--r-panel); box-shadow: var(--lift); }
@@ -744,6 +770,7 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
 }
 
 @media (max-width: 420px) {
+  .mk-vid { display: none; }
   h1 { font-size: 42px; }
   .stack .ticket, .fault-card { margin-left: 8%; }
   .board th:nth-child(2), .board td:nth-child(2) { display: none; }
