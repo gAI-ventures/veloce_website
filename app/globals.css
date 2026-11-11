@@ -143,6 +143,7 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 /* Channel mockups. The stage is a fixed shape; the web app sits behind, the two phones in front. */
 .channels { margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .channels figcaption { font-size: 12.5px; color: var(--ink-4); text-align: center; }
+.ch-swipe { display: none; }
 .channels-stage { position: relative; aspect-ratio: 1 / .94; }
 .ch-slot { position: absolute; display: flex; flex-direction: column; }
 .ch-web { top: 0; left: 6%; right: 6%; height: 70%; z-index: 1; }
@@ -663,7 +664,7 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .nav-bar { gap: 20px; }
   .nav-links a { padding: 8px 8px; font-size: 15px; }
   .sec-head.split { grid-template-columns: 1fr; gap: 16px; }
-  .hero-panel { grid-template-columns: 1fr; gap: 40px; padding: 56px 48px; }
+  .hero-panel { grid-template-columns: minmax(0, 1fr); gap: 40px; padding: 56px 48px; }
   .hero-ui { width: 100%; max-width: 620px; justify-self: center; }
   .sec-head.split .lede { justify-self: start; }
   .row, .row:nth-child(even), .hk { grid-template-columns: 1fr; gap: 32px; }
@@ -694,10 +695,17 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .hero-panel { gap: 32px; padding: 32px 18px 24px; border-radius: 20px; }
   .hero .lede { font-size: 17px; margin-top: 18px; }
   .chan-line { font-size: 15px; }
-  .channels-stage { aspect-ratio: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px 12px; }
-  .ch-slot { position: static; }
-  .ch-web { grid-column: 1 / -1; height: 290px; }
-  .ch-wa, .ch-im { width: auto; height: 340px; }
+  /* Phones: the three screens become a swipeable row, each at a readable size */
+  .channels { min-width: 0; margin: 0 -18px; }
+  .channels figcaption { padding: 0 18px; }
+  .channels-stage { aspect-ratio: auto; display: flex; align-items: center; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 18px; padding: 6px 18px 12px; overscroll-behavior-x: contain; scrollbar-width: none; }
+  .channels-stage::-webkit-scrollbar { display: none; }
+  .ch-slot { position: static; flex: none; scroll-snap-align: start; }
+  .ch-web { width: 86%; height: 380px; }
+  .ch-wa, .ch-im { width: 212px; height: 412px; }
+  .ch-wa .ch-label, .ch-im .ch-label { order: 0; align-self: flex-start; margin: 0 0 8px; }
+  .ch-swipe { display: inline; }
+  .mk-via span { display: none; }
   .mk-app { grid-template-columns: 44px minmax(0, 1fr); }
   .mk-side { padding: 10px 6px; }
   .mk-side span { justify-content: center; padding: 7px 0; font-size: 0; }
@@ -771,6 +779,8 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
 
 @media (max-width: 420px) {
   .mk-vid { display: none; }
+  .ch-web { width: 90%; }
+  .mk-via { display: none; }
   h1 { font-size: 42px; }
   .stack .ticket, .fault-card { margin-left: 8%; }
   .board th:nth-child(2), .board td:nth-child(2) { display: none; }

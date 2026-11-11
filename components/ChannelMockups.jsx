@@ -47,7 +47,7 @@ function WebApp() {
             {JOBS.map((j) => (
               <div className="mk-row" key={j.h}>
                 <span className="mk-job"><b>{j.h}</b><small>{j.s}</small></span>
-                <span className="mk-via"><Icon name={j.icon} />{j.via}</span>
+                <span className="mk-via"><Icon name={j.icon} /><span>{j.via}</span></span>
                 <span className={`mk-st t-${j.tone}`}>{j.st}</span>
               </div>
             ))}
@@ -146,7 +146,7 @@ export default function ChannelMockups() {
         <div className="ch-slot ch-wa"><span className="ch-label">WhatsApp</span><WhatsAppPhone /></div>
         <div className="ch-slot ch-im"><span className="ch-label">iMessage</span><IMessagePhone /></div>
       </div>
-      <figcaption>Example screens and data.</figcaption>
+      <figcaption>Example screens and data.<span className="ch-swipe"> Swipe to see WhatsApp and iMessage.</span></figcaption>
     </figure>
   );
 }
