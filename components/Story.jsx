@@ -30,7 +30,7 @@ const PMS_FEATURES = [
   'One calendar for every home',
   'Two-way sync with Airbnb and Booking.com',
   'Direct bookings, with no commission',
-  'Guest messages on WhatsApp',
+  'Guest messaging in the same place',
 ];
 
 export function NoPms() {
@@ -85,7 +85,7 @@ const REVENUE = [
 ];
 
 const FIN_FEATURES = [
-  { h: 'Send a photo, the expense is logged', p: 'Staff send a receipt or bill on WhatsApp. Veloce reads the amount, vendor and home.' },
+  { h: 'Send a photo, the expense is logged', p: 'Staff send a photo of a receipt or bill from their phone. Veloce reads the amount, vendor and home.' },
   { h: 'Revenue net of platform fees', p: 'Airbnb and Booking.com payouts, direct stays and guest add-ons, by home.' },
   { h: 'Invoices', p: 'Generate and send invoices from the same records.', soon: true },
 ];

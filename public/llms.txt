@@ -8,11 +8,11 @@ Owners and operations managers running several properties: short-term rentals, s
 
 ## What it does
 
-- Hears about guest problems during the stay, through a short call or WhatsApp message in the guest's own language.
-- Sends each issue to the right person on WhatsApp, reminds them until it is fixed, and tells the guest.
+- Hears about guest problems during the stay, through a short call or a WhatsApp or iMessage message, in the guest's own language.
+- Sends each issue to the right person on WhatsApp or iMessage, reminds them until it is fixed, and tells the guest.
 - Keeps one record per property and flags faults that keep coming back.
 - Gives housekeepers turnover checklists on their phone, so managers can see which rooms are ready.
-- Works alongside the operator's PMS and channel manager. Staff keep using WhatsApp, with no new app to learn.
+- Runs without a PMS, or alongside the operator's existing PMS and channel manager. Staff keep using WhatsApp or iMessage, with no new app to learn. Managers use the Veloce web app.
 
 Pricing depends on portfolio size and channels and is shared on a call.
 
