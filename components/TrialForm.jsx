@@ -45,7 +45,7 @@ export default function TrialForm({ demoWaUrl }) {
       <div className="trial-form trial-done" role="status">
         <span className="trial-ok" aria-hidden="true"><Icon name="check" /></span>
         <h3>You’re in, {f.name.split(' ')[0] || 'thanks'}</h3>
-        <p>We’ll message you on WhatsApp {TRIAL.setup} to set up your first homes.</p>
+        <p>We’ll message you {TRIAL.setup} to set up your first homes.</p>
         {demoWaUrl && (
           <div className="trial-next">
             <p>While you wait, message our demo home as a guest would.</p>
@@ -64,7 +64,7 @@ export default function TrialForm({ demoWaUrl }) {
       </div>
       <div className="tf-2">
         <div className="tf">
-          <label htmlFor="tf-wa">WhatsApp number</label>
+          <label htmlFor="tf-wa">Mobile number</label>
           <input id="tf-wa" required type="tel" inputMode="tel" autoComplete="tel" placeholder="+91 98000 00000" value={f.whatsapp} onChange={set('whatsapp')} />
         </div>
         <div className="tf">

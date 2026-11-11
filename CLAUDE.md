@@ -32,6 +32,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Title, description, social preview | `app/layout.jsx` |
 | Colours, spacing, breakpoints | `app/globals.css` |
 | Hero headline and buttons | `components/Hero.jsx` |
+| Hero screens (web app, WhatsApp, iMessage) | `components/ChannelMockups.jsx` |
 | "Coming in / Handled" animation | `components/Convergence.jsx` (client component) |
 | Property-type ticker, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
 | Calculator UI | `components/SavingsModel.jsx`; its state lives in `components/Gains.jsx` |
@@ -57,6 +58,7 @@ Components are server components unless they need state or effects. Only then ad
 - PMS: lead with "no PMS needed", and always pair it with "or keep yours, Veloce works alongside it".
 - Say "operator" for the person running the business, never "owner".
 - WhatsApp is one channel, not the headline. Never describe Veloce as "one WhatsApp thread" or a WhatsApp group.
+- Veloce works on WhatsApp, on iMessage and as a web app. When channels come up, name WhatsApp and iMessage together and mention the web app. Never present Veloce as WhatsApp only.
 - The footer credit "Built by gAI Ventures" is plain text, not a link.
 - The free month (#trial) is the main call to action; the 30-minute call is second.
 - Finance: expenses and revenue are live. Invoices stay "Coming soon" until they ship.
@@ -74,12 +76,12 @@ Components are server components unless they need state or effects. Only then ad
 ## Design rules
 
 - **Light mode only.** No dark mode and no theme toggle. Dark mode belongs to the Veloce app, not this site.
-- White page with Veloce green as the main colour. The hero and contact panels use `public/pool-deep.webp` (blurred sunlight on pool water, in Veloce green) with a fine dot grid; product panels (`.stage`) use the pale `public/pool-light.webp`. White product cards sit on them with a soft shadow. No glass effects on panels or cards. Corners: 10px controls, 16px cards, 24px panels.
+- White page with Veloce green as the main colour. The hero panel is off-white (`--paper`) with a faint dot grid, and shows example screens of the web app, WhatsApp and iMessage together. The contact panel uses `public/pool-deep.webp` (blurred sunlight on pool water, in Veloce green) with a fine dot grid; product panels (`.stage`) use the pale `public/pool-light.webp`. White product cards sit on them with a soft shadow. No glass effects on panels or cards. Corners: 10px controls, 16px cards, 24px panels.
 - Reference points: smallest.ai (white space, plain layout, heading left and short text right) and cardboard.ai (serif headlines, product screens with short captions).
 - Brand green `#0a5c4a` for buttons, marks and key numbers; accent green `#377863` for small details. Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
 - Fonts, loaded with `next/font` in `app/layout.jsx`: Newsreader (serif) for h1, h2 and large numbers; Hanken Grotesk for everything else. Avoid generic AI-site fonts (Inter, DM Sans, Manrope, Space Grotesk, Geist). The logo is the brand PNG; do not redraw it as live text.
 - Avoid generic template tells: all-caps labels, monospace labels, "01 / 02 / 03" numbering (unless the content really is a sequence), an arrow at the end of links, and middle-dot separated labels.
-- Motion is limited to the hero animation and the slow property-type ticker under it (it pauses on hover and becomes a static list with reduced motion). No fade-in-on-scroll effects on every section. Respect reduced motion.
+- The hero screens are static. Motion is limited to the slow property-type ticker under the hero (it pauses on hover and becomes a static list with reduced motion). No fade-in-on-scroll effects on every section. Respect reduced motion.
 - **Must stay mobile responsive.** Breakpoints: 1100px, 860px (menu button), 760px (phone layout), 420px (small phones). There must be no sideways scrolling at 360px.
 
 ## Links

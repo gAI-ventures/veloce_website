@@ -37,7 +37,7 @@ const TODAY = [
 
 const WITH = [
   { t: 'Day 1, 18:22', p: 'On the check-in call, the guest mentions the AC.', w: 'Voice call', icon: 'phone' },
-  { t: '18:24', p: 'It’s logged for Room 401 and sent to Ravi on WhatsApp.', w: 'Veloce', icon: 'chat' },
+  { t: '18:24', p: 'It’s logged for Room 401 and sent to Ravi’s phone.', w: 'Veloce', icon: 'chat' },
   { t: '19:06', p: 'Fixed before dinner, and the guest hears back.', w: 'Closed', icon: 'check', good: true },
   { t: 'Day 4', p: 'A 5-star review: “They sorted the AC within the hour.”', w: 'Review site', icon: 'star', good: true },
 ];
@@ -128,7 +128,7 @@ const TRAIL = [
   { t: '18:24', h: 'Ops manager copied', s: 'High priority, in-house guest', icon: 'user' },
   { t: '18:50', h: 'Reminder sent', s: 'No update after 25 minutes', icon: 'alert' },
   { t: '19:05', h: 'Photo of the fix', s: 'Ravi, from Room 401', icon: 'check' },
-  { t: '19:06', h: 'Guest told', s: 'WhatsApp message', icon: 'phone', done: true },
+  { t: '19:06', h: 'Guest told', s: 'Text message', icon: 'chat', done: true },
 ];
 
 function RouteVisual() {
@@ -181,8 +181,8 @@ function BoardVisual() {
 }
 
 const ROWS = [
-  { h: 'Hear it early', p: 'Guests get a quick call or WhatsApp during their stay. Caretakers and operators report into the same list.', v: <CallVisual /> },
-  { h: 'Get it fixed', p: 'The right person gets it on WhatsApp and a nudge until it’s done. Then the guest hears back.', v: <RouteVisual /> },
+  { h: 'Hear it early', p: 'Guests get a quick call or message during their stay. Caretakers and operators report into the same list.', v: <CallVisual /> },
+  { h: 'Get it fixed', p: 'The right person gets it on their phone, with a nudge until it’s done. Then the guest hears back.', v: <RouteVisual /> },
   { h: 'Learn what breaks', p: 'When the same thing keeps breaking, you find out before the next guest does.', v: <BoardVisual /> },
 ];
 
@@ -207,6 +207,7 @@ export function Steps() {
       <p className="via">
         <span className="chan"><Icon name="phone" />Voice calls</span>
         <span className="chan"><Icon name="chat" />WhatsApp</span>
+        <span className="chan"><Icon name="chat" />iMessage</span>
         <span className="txt">in your guest’s own language</span>
       </p>
       <p className="fine example center">Screens show example data.</p>

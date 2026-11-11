@@ -12,7 +12,7 @@ export default function Trial() {
       cta: <a className="btn btn-ghost btn-sm" href={demoWaUrl} {...ext}><Icon name="chat" />Try it on WhatsApp</a>,
     },
     { h: 'Tell us about your homes', p: 'A few quick questions. No card needed.' },
-    { h: `Live ${TRIAL.setup}`, p: `We connect your first homes and your team’s WhatsApp. Free for ${TRIAL.length}.` },
+    { h: `Live ${TRIAL.setup}`, p: `We connect your first homes and your team’s phones. Free for ${TRIAL.length}.` },
   ].filter(Boolean);
 
   return (
