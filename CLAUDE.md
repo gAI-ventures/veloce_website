@@ -32,7 +32,7 @@ The marketing website for Veloce, a hospitality operations platform built by gAI
 | Title, description, social preview | `app/layout.jsx` |
 | Colours, spacing, breakpoints | `app/globals.css` |
 | Hero headline and buttons | `components/Hero.jsx` |
-| Hero screens (web app, WhatsApp, iMessage) | `components/ChannelMockups.jsx` |
+| Hero screens (web app, WhatsApp, iMessage) | `components/ChannelMockups.jsx`; web app screenshot is `public/app-maintenance.webp` (phones: `app-maintenance-mobile.webp`) |
 | "Coming in / Handled" animation | `components/Convergence.jsx` (client component) |
 | Property-type ticker, problem timelines, how-it-helps rows, housekeeping | `components/Sections.jsx` |
 | Calculator UI | `components/SavingsModel.jsx`; its state lives in `components/Gains.jsx` |
@@ -76,7 +76,7 @@ Components are server components unless they need state or effects. Only then ad
 ## Design rules
 
 - **Light mode only.** No dark mode and no theme toggle. Dark mode belongs to the Veloce app, not this site.
-- White page with Veloce green as the main colour. The hero panel is off-white (`--paper`) with a faint dot grid, and shows example screens of the web app, WhatsApp and iMessage together. The contact panel uses `public/pool-deep.webp` (blurred sunlight on pool water, in Veloce green) with a fine dot grid; product panels (`.stage`) use the pale `public/pool-light.webp`. White product cards sit on them with a soft shadow. No glass effects on panels or cards. Corners: 10px controls, 16px cards, 24px panels.
+- White page with Veloce green as the main colour. The hero panel is off-white (`--paper`) with a faint dot grid, and shows a real screenshot of the web app (demo account, taken from the Maintenance help video) with example WhatsApp and iMessage chats that tell the same story. The contact panel uses `public/pool-deep.webp` (blurred sunlight on pool water, in Veloce green) with a fine dot grid; product panels (`.stage`) use the pale `public/pool-light.webp`. White product cards sit on them with a soft shadow. No glass effects on panels or cards. Corners: 10px controls, 16px cards, 24px panels.
 - Reference points: smallest.ai (white space, plain layout, heading left and short text right) and cardboard.ai (serif headlines, product screens with short captions).
 - Brand green `#0a5c4a` for buttons, marks and key numbers; accent green `#377863` for small details. Text `#0f1311`. Colour tokens are at the top of `globals.css`; use them rather than new hex values.
 - Fonts, loaded with `next/font` in `app/layout.jsx`: Newsreader (serif) for h1, h2 and large numbers; Hanken Grotesk for everything else. Avoid generic AI-site fonts (Inter, DM Sans, Manrope, Space Grotesk, Geist). The logo is the brand PNG; do not redraw it as live text.

@@ -144,38 +144,21 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .channels { margin: 0; display: flex; flex-direction: column; gap: 12px; }
 .channels figcaption { font-size: 12.5px; color: var(--ink-4); text-align: center; }
 .ch-swipe { display: none; }
-.channels-stage { position: relative; aspect-ratio: 1 / .94; }
+.channels-stage { position: relative; aspect-ratio: 1 / 1.08; }
 .ch-slot { position: absolute; display: flex; flex-direction: column; }
-.ch-web { top: 0; left: 6%; right: 6%; height: 70%; z-index: 1; }
-.ch-wa { left: 0; bottom: 0; width: 32%; height: 66%; z-index: 2; }
-.ch-im { right: 0; bottom: 3%; width: 32%; height: 66%; z-index: 2; }
+.ch-web { top: 0; left: 0; right: 0; z-index: 1; }
+.ch-wa { left: 4%; bottom: 0; width: 31%; height: 56%; z-index: 2; }
+.ch-im { right: 4%; bottom: 3%; width: 31%; height: 56%; z-index: 2; }
 .ch-label { flex: none; align-self: flex-start; margin-bottom: 8px; padding: 3px 10px; border-radius: 999px; background: #fff; box-shadow: var(--lift-sm); font-size: 12.5px; font-weight: 600; color: var(--ink-2); }
 .ch-wa .ch-label, .ch-im .ch-label { order: 2; align-self: center; margin: 10px 0 0; }
 .mk { flex: 1; min-height: 0; overflow: hidden; background: #fff; box-shadow: var(--lift); }
 
-.mk-web { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; }
+.mk-web { flex: none; display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 12px; }
 .mk-bar { flex: none; display: flex; align-items: center; gap: 6px; height: 30px; padding: 0 12px; background: var(--surface); border-bottom: 1px solid var(--line); }
 .mk-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line-2); }
 .mk-bar span { flex: 1; padding-right: 39px; text-align: center; font-size: 11.5px; color: var(--ink-4); }
-.mk-app { flex: 1; min-height: 0; display: grid; grid-template-columns: 25% minmax(0, 1fr); }
-.mk-side { display: flex; flex-direction: column; gap: 2px; padding: 12px 8px; background: var(--surface); border-right: 1px solid var(--line); font-size: 11.5px; color: var(--ink-3); }
-.mk-side span { display: flex; align-items: center; gap: 7px; padding: 6px 8px; border-radius: 7px; white-space: nowrap; }
-.mk-side svg { flex: none; width: 14px; height: 14px; }
-.mk-side .on { background: #fff; color: var(--brand); font-weight: 600; box-shadow: 0 1px 2px rgba(15, 40, 30, .08); }
-.mk-side .mk-logo { margin-bottom: 8px; padding-left: 6px; font-size: 13px; font-weight: 700; color: var(--ink); }
-.mk-logo svg { width: 18px; height: 18px; color: var(--brand); }
-.mk-main { min-width: 0; padding: 12px 14px; }
-.mk-head { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
-.mk-head b { font-family: var(--f-display); font-weight: 400; font-size: 20px; }
-.mk-head span { font-size: 11.5px; color: var(--ink-4); }
-.mk-row { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 10px; padding: 7px 0; border-top: 1px solid var(--line); font-size: 11.5px; }
-.mk-job { min-width: 0; display: flex; flex-direction: column; }
-.mk-job b, .mk-job small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.mk-job b { font-size: 12.5px; font-weight: 600; }
-.mk-job small { font-size: 11px; color: var(--ink-4); }
-.mk-via { display: inline-flex; align-items: center; gap: 4px; color: var(--ink-3); white-space: nowrap; }
-.mk-via svg { width: 12px; height: 12px; color: var(--accent-text); }
-.mk-st { padding: 2px 8px; border-radius: 999px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.mk-web picture, .mk-web img { display: block; width: 100%; height: auto; }
+.mk-web img { border-radius: 0 0 11px 11px; }
 
 /* Phones: iPhone frame with Dynamic Island, status bar and home indicator */
 .mk-phone { position: relative; display: flex; flex-direction: column; border-radius: 30px; box-shadow: 0 0 0 4px #1d1f1e, 0 0 0 5px #3a3d3b, var(--lift); }
@@ -198,6 +181,7 @@ h4 { font-size: 14px; color: var(--ink-4); font-weight: 500; }
 .mk-back { flex: none; width: 7px; height: 12px; fill: none; stroke: #000; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .mk-wa-name { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.15; }
 .mk-wa-name b { font-size: 11.5px; font-weight: 600; }
+.mk-wa-name b, .mk-wa-name small { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .mk-wa-name small { font-size: 9px; color: #667781; }
 .mk-wa-ic { flex: none; width: 15px; height: 15px; margin-left: 6px; fill: none; stroke: #000; stroke-width: 1.6; stroke-linejoin: round; }
 .mk-wa .mk-chat {
@@ -701,17 +685,10 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
   .channels-stage { aspect-ratio: auto; display: flex; align-items: center; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 18px; padding: 6px 18px 12px; overscroll-behavior-x: contain; scrollbar-width: none; }
   .channels-stage::-webkit-scrollbar { display: none; }
   .ch-slot { position: static; flex: none; scroll-snap-align: start; }
-  .ch-web { width: 86%; height: 380px; }
+  .ch-web { width: 86%; }
   .ch-wa, .ch-im { width: 212px; height: 412px; }
   .ch-wa .ch-label, .ch-im .ch-label { order: 0; align-self: flex-start; margin: 0 0 8px; }
   .ch-swipe { display: inline; }
-  .mk-via span { display: none; }
-  .mk-app { grid-template-columns: 44px minmax(0, 1fr); }
-  .mk-side { padding: 10px 6px; }
-  .mk-side span { justify-content: center; padding: 7px 0; font-size: 0; }
-  .mk-side .mk-logo { padding-left: 0; font-size: 0; }
-  .mk-main { padding: 10px; }
-  .mk-row { gap: 8px; }
   .conv { padding: 14px 12px 16px; }
   .conv-grid { display: none; }
   .conv-rows { display: flex; }
@@ -780,7 +757,6 @@ input[type="range"] { width: 100%; height: 32px; margin: 0; accent-color: var(--
 @media (max-width: 420px) {
   .mk-vid { display: none; }
   .ch-web { width: 90%; }
-  .mk-via { display: none; }
   h1 { font-size: 42px; }
   .stack .ticket, .fault-card { margin-left: 8%; }
   .board th:nth-child(2), .board td:nth-child(2) { display: none; }
